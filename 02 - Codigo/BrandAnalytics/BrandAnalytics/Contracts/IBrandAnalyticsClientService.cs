@@ -5,15 +5,18 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BrandAnalytics
+namespace BrandAnalytics.Contracts
 {
     [ServiceContract]
-    public interface IBrandAnalyticsService
+    public interface IBrandAnalyticsClientService
     {
         [OperationContract]
         int RequestStudy(string mark);
 
         [OperationContract]
         string GetState(int token);
+
+        [OperationContract]
+        void CancelStudy(int token);
     }
 }
