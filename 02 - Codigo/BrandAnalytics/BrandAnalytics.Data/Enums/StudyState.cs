@@ -10,6 +10,7 @@ namespace BrandAnalytics.Data.Enums
     {
         Waiting = 1,
         Collecting = 2,
-        Finished = 3
+        Finished = 3,
+        Canceled = 4
     }
 }
