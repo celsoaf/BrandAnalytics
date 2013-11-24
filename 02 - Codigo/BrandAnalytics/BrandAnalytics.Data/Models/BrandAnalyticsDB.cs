@@ -16,5 +16,8 @@ namespace BrandAnalytics.Data.Models
 
         public IDbSet<Client> Clients { get; set; }
         public IDbSet<Study> Studies { get; set; }
+        public IDbSet<Topic> Topics { get; set; }
+        public IDbSet<StudyReport> Reports { get; set; }
+        public IDbSet<StudyTermReport> ReportTerms { get; set; }
     }
 }

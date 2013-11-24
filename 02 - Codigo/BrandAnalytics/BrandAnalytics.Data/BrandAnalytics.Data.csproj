@@ -50,6 +50,9 @@
     <Compile Include="Models\BrandAnalyticsDB.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Study.cs" />
+    <Compile Include="Models\StudyReport.cs" />
+    <Compile Include="Models\StudyTermReport.cs" />
+    <Compile Include="Models\Topic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

@@ -5,22 +5,17 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BrandAnalytics.Data.Enums;
 
 namespace BrandAnalytics.Data.Models
 {
-    public class Study
+    public class StudyTermReport
     {
-        [Key]
+        [Key, Column(Order = 0)]
         public int Id { get; set; }
-        [Required]
-        public string Mark { get; set; }
-
-        public StudyState State { get; set; }
-
-        public DateTime? Start { get; set; }
-
-        public DateTime? End { get; set; }
+        [Key, Column(Order = 1)]
+        public int StudyId { get; set; }
+        public string Term { get; set; }
+        public int Count { get; set; }
 
         [ForeignKey("Id")]
         public virtual StudyReport Report { get; set; }
