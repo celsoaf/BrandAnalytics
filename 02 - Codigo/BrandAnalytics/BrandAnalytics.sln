@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrandAnalytics", "BrandAnalytics\BrandAnalytics.csproj", "{97A0DC6F-CAF2-4E5D-8AA2-D9A4EB3B4B4B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitterSpy", "TwitterSpy\TwitterSpy.csproj", "{1B33828C-B7AB-449E-8ED4-C5B146232FCB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrandAnalytics.Data", "BrandAnalytics.Data\BrandAnalytics.Data.csproj", "{D73189A3-3B85-446F-A379-B62C14300ABC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrandAnalytics.Web", "BrandAnalytics.Web\BrandAnalytics.Web.csproj", "{EC218C80-605A-448B-9852-A51168C19AA5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,14 @@ Global
 		{1B33828C-B7AB-449E-8ED4-C5B146232FCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B33828C-B7AB-449E-8ED4-C5B146232FCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B33828C-B7AB-449E-8ED4-C5B146232FCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D73189A3-3B85-446F-A379-B62C14300ABC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D73189A3-3B85-446F-A379-B62C14300ABC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D73189A3-3B85-446F-A379-B62C14300ABC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D73189A3-3B85-446F-A379-B62C14300ABC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC218C80-605A-448B-9852-A51168C19AA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC218C80-605A-448B-9852-A51168C19AA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC218C80-605A-448B-9852-A51168C19AA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC218C80-605A-448B-9852-A51168C19AA5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
