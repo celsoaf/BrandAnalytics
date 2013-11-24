@@ -330,6 +330,10 @@
       <Project>{d73189a3-3b85-446f-a379-b62c14300abc}</Project>
       <Name>BrandAnalytics.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BrandAnalytics.Infrastructure\BrandAnalytics.Infrastructure.csproj">
+      <Project>{6ad51482-bc52-4b12-958c-84ad9813d761}</Project>
+      <Name>BrandAnalytics.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
