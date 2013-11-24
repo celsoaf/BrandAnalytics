@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrandAnalytics", "BrandAnalytics\BrandAnalytics.csproj", "{97A0DC6F-CAF2-4E5D-8AA2-D9A4EB3B4B4B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitterSpy", "TwitterSpy\TwitterSpy.csproj", "{1B33828C-B7AB-449E-8ED4-C5B146232FCB}"
@@ -8,6 +10,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrandAnalytics.Data", "BrandAnalytics.Data\BrandAnalytics.Data.csproj", "{D73189A3-3B85-446F-A379-B62C14300ABC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrandAnalytics.Web", "BrandAnalytics.Web\BrandAnalytics.Web.csproj", "{EC218C80-605A-448B-9852-A51168C19AA5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{97A0DC6F-CAF2-4E5D-8AA2-D9A4EB3B4B4B} = {97A0DC6F-CAF2-4E5D-8AA2-D9A4EB3B4B4B}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{60E8D83A-F076-4E65-913C-8EDADE5B593E}"
 EndProject

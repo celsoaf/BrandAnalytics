@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-16"?>
-<ActivityTemplateFactory x:Class="IBrandAnalyticsClientService.GetState_ReceiveAndSendReply" x:TypeArguments="p1:Sequence" xmlns="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation/toolbox" xmlns:bc="clr-namespace:BrandAnalytics.Contracts;assembly=BrandAnalytics" xmlns:p="http://tempuri.org/" xmlns:p1="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:p2="http://schemas.microsoft.com/netfx/2009/xaml/servicemodel" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<ActivityTemplateFactory x:Class="IBrandAnalyticsClientService.GetState_ReceiveAndSendReply" x:TypeArguments="p1:Sequence" xmlns="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation/toolbox" xmlns:bc="clr-namespace:BrandAnalytics.Contracts;assembly=BrandAnalytics" xmlns:bde="clr-namespace:BrandAnalytics.Data.Enums;assembly=BrandAnalytics.Data" xmlns:p="http://tempuri.org/" xmlns:p1="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:p2="http://schemas.microsoft.com/netfx/2009/xaml/servicemodel" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <p1:Sequence DisplayName="GetState_ReceiveAndSendReply">
     <p1:Sequence.Variables>
       <x:Reference>__ReferenceID1</x:Reference>
@@ -29,7 +29,7 @@
     </p2:Receive>
     <p2:SendReply Request="{x:Reference __ReferenceID0}" Action="http://tempuri.org/IBrandAnalyticsClientService/GetStateResponse" DisplayName="GetState_SendReply">
       <p2:SendParametersContent>
-        <p1:InArgument x:TypeArguments="x:String" x:Key="GetStateResult" />
+        <p1:InArgument x:TypeArguments="bde:StudyState" x:Key="GetStateResult" />
       </p2:SendParametersContent>
     </p2:SendReply>
   </p1:Sequence>

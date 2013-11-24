@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Security;
 using BrandAnalytics.Web.Models;
 using WebMatrix.WebData;
+using BrandAnalytics.Data.Models;
 
 namespace BrandAnalytics.Web.Utils
 {
@@ -53,7 +54,24 @@ namespace BrandAnalytics.Web.Utils
             var adminUser = Properties.Settings.Default.AdminUser;
 
             if (!WebSecurity.UserExists(adminUser))
+            {
                 WebSecurity.CreateUserAndAccount(adminUser, Properties.Settings.Default.AdminPassword);
+
+                System.Threading.Tasks.Task.Factory.StartNew(() =>
+                {
+                    using (var ctx = new BrandAnalyticsDB())
+                    {
+                        ctx.Clients.Add(new Client()
+                        {
+                            UserName = adminUser,
+                            Name = "Administrator",
+                            Email = "test@brandanalitics.com"
+                        });
+
+                        ctx.SaveChanges();
+                    }
+                });
+            }
 
 
             if (!Roles.RoleExists(ApplicationRoles.AuthorizationManage))
