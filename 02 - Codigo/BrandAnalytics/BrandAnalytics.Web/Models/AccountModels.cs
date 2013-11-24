@@ -57,11 +57,15 @@ namespace BrandAnalytics.Web.Models
 
     public class LoginModel
     {
+#if !DEBUG
         [Required]
+#endif
         [Display(Name = "User name")]
         public string UserName { get; set; }
 
+#if !DEBUG
         [Required]
+#endif
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
@@ -75,6 +79,14 @@ namespace BrandAnalytics.Web.Models
         [Required]
         [Display(Name = "User name")]
         public string UserName { get; set; }
+
+        [Required]
+        [Display(Name = "Name")]
+        public string Name { get; set; }
+
+        [Required]
+        [DataType(DataType.EmailAddress, ErrorMessage = "Email invalid")]
+        public string Email { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]

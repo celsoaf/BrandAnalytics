@@ -10,7 +10,7 @@ namespace BrandAnalytics.Data.Models
     public class Client
     {
         [Key]
-        public int Id { get; set; }
+        public string UserName { get; set; }
         [Required]
         public string Name { get; set; }
         [Required, EmailAddress]

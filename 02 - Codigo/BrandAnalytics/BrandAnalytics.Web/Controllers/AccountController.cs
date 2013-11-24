@@ -10,6 +10,7 @@ using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 using BrandAnalytics.Web.Filters;
 using BrandAnalytics.Web.Models;
+using BrandAnalytics.Data.Models;
 
 namespace BrandAnalytics.Web.Controllers
 {
@@ -35,6 +36,14 @@ namespace BrandAnalytics.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model, string returnUrl)
         {
+#if DEBUG
+            if (string.IsNullOrEmpty(model.UserName))
+            {
+                model.UserName = Properties.Settings.Default.AdminUser;
+                model.Password = Properties.Settings.Default.AdminPassword;
+            }
+#endif
+            
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
                 return RedirectToLocal(returnUrl);
@@ -81,6 +90,20 @@ namespace BrandAnalytics.Web.Controllers
                 {
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
                     WebSecurity.Login(model.UserName, model.Password);
+
+                    using (var ctx = new BrandAnalyticsDB())
+                    {
+                        ctx.Clients.Add(new Client()
+                        {
+                            UserName = model.UserName,
+                            Name = model.Name,
+                            Email = model.Email
+                        });
+
+                        ctx.SaveChanges();
+                    }
+
+
                     return RedirectToAction("Index", "Home");
                 }
                 catch (MembershipCreateUserException e)
