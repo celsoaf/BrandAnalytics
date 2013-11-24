@@ -4,6 +4,7 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using TwitterSpy.Models;
 
 namespace TwitterSpy
 {
@@ -11,6 +12,6 @@ namespace TwitterSpy
     public interface ITwitterSpyService
     {
         [OperationContract]
-        int SpyTopics(string topic, DateTime start, DateTime end);
+        StudyResult SpyTopics(string[] topics, DateTime start, DateTime end);
     }
 }
