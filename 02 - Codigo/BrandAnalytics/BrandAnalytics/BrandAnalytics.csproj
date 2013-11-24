@@ -74,6 +74,7 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Compile Include="Activities\SaveNewStudyActivity.cs" />
     <Compile Include="Contracts\IBrandAnalyticsClientService.cs" />
     <Compile Include="Contracts\IBrandAnalyticsInternalService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -81,7 +82,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Service Contracts\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="BrandAnalyticsService.xamlx">
@@ -101,6 +101,27 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Service Contracts\IBrandAnalyticsClientService\contractTypeName" />
+  </ItemGroup>
+  <ItemGroup>
+    <XamlAppDef Include="Service Contracts\IBrandAnalyticsClientService\RequestStudy_ReceiveAndSendReply.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </XamlAppDef>
+  </ItemGroup>
+  <ItemGroup>
+    <XamlAppDef Include="Service Contracts\IBrandAnalyticsClientService\GetState_ReceiveAndSendReply.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </XamlAppDef>
+  </ItemGroup>
+  <ItemGroup>
+    <XamlAppDef Include="Service Contracts\IBrandAnalyticsClientService\CancelStudy_ReceiveAndSendReply.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </XamlAppDef>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
