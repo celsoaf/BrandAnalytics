@@ -75,14 +75,15 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Compile Include="ITwitterSpyService.cs" />
-    <Compile Include="Models\StudyResult.cs" />
+    <Compile Include="Models\ReportModel.cs" />
+    <Compile Include="Models\ReportTermModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Service1.xamlx">
+    <Content Include="TwitterSpyService.xamlx">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Content>

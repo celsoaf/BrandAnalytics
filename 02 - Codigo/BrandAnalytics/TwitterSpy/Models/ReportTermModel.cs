@@ -7,8 +7,11 @@ using System.Web;
 namespace TwitterSpy.Models
 {
     [DataContract]
-    public class StudyResult
+    public class ReportTermModel
     {
-        public int Id { get; set; }
+        [DataMember]
+        public string Term { get; set; }
+        [DataMember]
+        public int Count { get; set; }
     }
 }
