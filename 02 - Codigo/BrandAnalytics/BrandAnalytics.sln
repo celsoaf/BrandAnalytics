@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrandAnalytics.Data", "Bran
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrandAnalytics.Web", "BrandAnalytics.Web\BrandAnalytics.Web.csproj", "{EC218C80-605A-448B-9852-A51168C19AA5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{60E8D83A-F076-4E65-913C-8EDADE5B593E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{347D292A-3740-46D4-BD08-58758068E4CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,5 +38,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D73189A3-3B85-446F-A379-B62C14300ABC} = {60E8D83A-F076-4E65-913C-8EDADE5B593E}
+		{97A0DC6F-CAF2-4E5D-8AA2-D9A4EB3B4B4B} = {347D292A-3740-46D4-BD08-58758068E4CD}
+		{1B33828C-B7AB-449E-8ED4-C5B146232FCB} = {347D292A-3740-46D4-BD08-58758068E4CD}
 	EndGlobalSection
 EndGlobal
