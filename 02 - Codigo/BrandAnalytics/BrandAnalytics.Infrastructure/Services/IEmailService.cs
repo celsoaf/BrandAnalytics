@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BrandAnalytics.Services
+namespace BrandAnalytics.Infrastructure.Services
 {
     public interface IEmailService
     {

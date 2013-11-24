@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace BrandAnalytics.Services
+namespace BrandAnalytics.Infrastructure.Services
 {
     public class EmailService
     {
