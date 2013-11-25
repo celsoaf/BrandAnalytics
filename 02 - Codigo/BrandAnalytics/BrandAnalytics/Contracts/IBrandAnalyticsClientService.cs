@@ -15,7 +15,7 @@ namespace BrandAnalytics.Contracts
         int RequestStudy(string userName, string mark);
 
         [OperationContract]
-        StudyState GetState(int token);
+        string GetState(int token);
 
         [OperationContract]
         void CancelStudy(int token);
