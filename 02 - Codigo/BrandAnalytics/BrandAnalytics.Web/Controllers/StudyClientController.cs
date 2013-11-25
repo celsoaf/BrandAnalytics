@@ -119,5 +119,62 @@ namespace BrandAnalytics.Web.Controllers
                 return View();
             }
         }
+
+        //
+        // GET: /Study/Delete/5
+
+        public ActionResult Delete(int id)
+        {
+            using (var ctx = new BrandAnalyticsDB())
+            {
+                var model = ctx.Studies
+                    .Where(s => s.Id == id)
+                    .Select(s => new StudyClientModel()
+                    {
+                        Id = s.Id,
+                        Mark = s.Mark,
+                        Start = s.Start,
+                        End = s.End
+                    })
+                    .FirstOrDefault();
+
+                return View(model);
+            }
+        }
+
+        //
+        // POST: /Study/Delete/5
+
+        [HttpPost]
+        public ActionResult Delete(int id, FormCollection collection)
+        {
+            try
+            {
+                using (var ctx = new BrandAnalyticsDB())
+                {
+                    var study = ctx.Studies.FirstOrDefault(s => s.Id == id);
+
+                    if (study != null)
+                    {
+                        if (study.Report != null)
+                        {
+                            foreach (var item in study.Report.Terms)
+                            {
+                                ctx.ReportTerms.Remove(item);
+                            }
+                            ctx.Reports.Remove(study.Report);
+                        }
+                        ctx.Studies.Remove(study);
+                        ctx.SaveChanges();
+                    }
+                }
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
     }
 }
