@@ -98,7 +98,10 @@ namespace BrandAnalytics.Web.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
+                using (var service = new BrandAnaliticsClient.BrandAnalyticsClientServiceClient())
+                {
+                    service.CancelStudy(id);
+                }
 
                 return RedirectToAction("Index");
             }

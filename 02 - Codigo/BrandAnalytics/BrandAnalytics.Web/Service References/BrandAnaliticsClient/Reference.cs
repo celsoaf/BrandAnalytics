@@ -26,6 +26,12 @@ namespace BrandAnalytics.Web.BrandAnaliticsClient {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBrandAnalyticsClientService/GetState", ReplyAction="http://tempuri.org/IBrandAnalyticsClientService/GetStateResponse")]
         System.Threading.Tasks.Task<string> GetStateAsync(int token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBrandAnalyticsClientService/CancelStudy", ReplyAction="http://tempuri.org/IBrandAnalyticsClientService/CancelStudyResponse")]
+        void CancelStudy(int token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBrandAnalyticsClientService/CancelStudy", ReplyAction="http://tempuri.org/IBrandAnalyticsClientService/CancelStudyResponse")]
+        System.Threading.Tasks.Task CancelStudyAsync(int token);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -69,6 +75,14 @@ namespace BrandAnalytics.Web.BrandAnaliticsClient {
         
         public System.Threading.Tasks.Task<string> GetStateAsync(int token) {
             return base.Channel.GetStateAsync(token);
+        }
+        
+        public void CancelStudy(int token) {
+            base.Channel.CancelStudy(token);
+        }
+        
+        public System.Threading.Tasks.Task CancelStudyAsync(int token) {
+            return base.Channel.CancelStudyAsync(token);
         }
     }
 }

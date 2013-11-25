@@ -18,6 +18,12 @@
   <wsdl:message name="IBrandAnalyticsClientService_GetState_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetStateResponse" />
   </wsdl:message>
+  <wsdl:message name="IBrandAnalyticsClientService_CancelStudy_InputMessage">
+    <wsdl:part name="parameters" element="tns:CancelStudy" />
+  </wsdl:message>
+  <wsdl:message name="IBrandAnalyticsClientService_CancelStudy_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CancelStudyResponse" />
+  </wsdl:message>
   <wsdl:portType name="IBrandAnalyticsClientService">
     <wsdl:operation name="RequestStudy">
       <wsdl:input wsaw:Action="http://tempuri.org/IBrandAnalyticsClientService/RequestStudy" message="tns:IBrandAnalyticsClientService_RequestStudy_InputMessage" />
@@ -26,6 +32,10 @@
     <wsdl:operation name="GetState">
       <wsdl:input wsaw:Action="http://tempuri.org/IBrandAnalyticsClientService/GetState" message="tns:IBrandAnalyticsClientService_GetState_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IBrandAnalyticsClientService/GetStateResponse" message="tns:IBrandAnalyticsClientService_GetState_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelStudy">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBrandAnalyticsClientService/CancelStudy" message="tns:IBrandAnalyticsClientService_CancelStudy_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBrandAnalyticsClientService/CancelStudyResponse" message="tns:IBrandAnalyticsClientService_CancelStudy_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IBrandAnalyticsClientService" type="tns:IBrandAnalyticsClientService">
@@ -41,6 +51,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetState">
       <soap:operation soapAction="http://tempuri.org/IBrandAnalyticsClientService/GetState" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelStudy">
+      <soap:operation soapAction="http://tempuri.org/IBrandAnalyticsClientService/CancelStudy" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
