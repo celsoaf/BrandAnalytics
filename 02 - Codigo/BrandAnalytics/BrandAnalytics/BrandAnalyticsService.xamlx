@@ -1,4 +1,4 @@
-﻿<WorkflowService mc:Ignorable="sap sap2010 sads" p1:TextExpression.Namespaces="{x:Reference __ReferenceID2}" p1:TextExpression.References="{x:Reference __ReferenceID3}" ConfigurationName="BrandAnalyticsService" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap2010:WorkflowViewState.IdRef="WorkflowService_1" Name="BrandAnalyticsService"
+﻿<WorkflowService mc:Ignorable="sap sap2010 sads" p1:TextExpression.Namespaces="{x:Reference __ReferenceID3}" p1:TextExpression.References="{x:Reference __ReferenceID4}" ConfigurationName="BrandAnalyticsService" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap2010:WorkflowViewState.IdRef="WorkflowService_1" Name="BrandAnalyticsService"
  xmlns="http://schemas.microsoft.com/netfx/2009/xaml/servicemodel"
  xmlns:ba="clr-namespace:BrandAnalytics.Activities;assembly=BrandAnalytics"
  xmlns:bc="clr-namespace:BrandAnalytics.Contracts;assembly=BrandAnalytics"
@@ -16,7 +16,7 @@
  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <p1:Sequence DisplayName="Sequential Service" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <p1:TextExpression.Namespaces>
-      <sco:Collection x:TypeArguments="x:String" x:Name="__ReferenceID2">
+      <sco:Collection x:TypeArguments="x:String" x:Name="__ReferenceID3">
         <x:String>System</x:String>
         <x:String>System.Collections.Generic</x:String>
         <x:String>System.Data</x:String>
@@ -26,7 +26,7 @@
       </sco:Collection>
     </p1:TextExpression.Namespaces>
     <p1:TextExpression.References>
-      <sco:Collection x:TypeArguments="p1:AssemblyReference" x:Name="__ReferenceID3">
+      <sco:Collection x:TypeArguments="p1:AssemblyReference" x:Name="__ReferenceID4">
         <p1:AssemblyReference>EntityFramework</p1:AssemblyReference>
         <p1:AssemblyReference>EntityFramework.SqlServer</p1:AssemblyReference>
         <p1:AssemblyReference>Microsoft.CSharp</p1:AssemblyReference>
@@ -178,8 +178,64 @@
           </SendParametersContent>
         </SendReply>
       </p1:Sequence>
+      <p1:Sequence DisplayName="CancelStudy_ReceiveAndSendReply" sap2010:WorkflowViewState.IdRef="Sequence_5">
+        <p1:Sequence.Variables>
+          <p1:Variable x:TypeArguments="CorrelationHandle" Name="__handle" />
+        </p1:Sequence.Variables>
+        <Receive x:Name="__ReferenceID2" Action="http://tempuri.org/IBrandAnalyticsClientService/CancelStudy" DisplayName="CancelStudy_Receive" sap2010:WorkflowViewState.IdRef="Receive_4" OperationName="CancelStudy" ProtectionLevel="None" ServiceContractName="p:IBrandAnalyticsClientService">
+          <Receive.CorrelatesOn>
+            <XPathMessageQuery x:Key="token">
+              <XPathMessageQuery.Namespaces>
+                <ssx:XPathMessageContextMarkup>
+                  <x:String x:Key="xgSc">http://tempuri.org/</x:String>
+                </ssx:XPathMessageContextMarkup>
+              </XPathMessageQuery.Namespaces>sm:body()/xgSc:CancelStudy/xgSc:token</XPathMessageQuery>
+          </Receive.CorrelatesOn>
+          <Receive.CorrelatesWith>
+            <p1:InArgument x:TypeArguments="CorrelationHandle">
+              <mca:CSharpValue x:TypeArguments="CorrelationHandle">handle</mca:CSharpValue>
+            </p1:InArgument>
+          </Receive.CorrelatesWith>
+          <Receive.CorrelationInitializers>
+            <RequestReplyCorrelationInitializer>
+              <RequestReplyCorrelationInitializer.CorrelationHandle>
+                <p1:InArgument x:TypeArguments="CorrelationHandle">
+                  <mca:CSharpValue x:TypeArguments="CorrelationHandle">handle</mca:CSharpValue>
+                </p1:InArgument>
+              </RequestReplyCorrelationInitializer.CorrelationHandle>
+            </RequestReplyCorrelationInitializer>
+          </Receive.CorrelationInitializers>
+          <ReceiveParametersContent>
+            <p1:OutArgument x:TypeArguments="x:Int32" x:Key="token" />
+          </ReceiveParametersContent>
+        </Receive>
+        <ba:CancelStudyActivity>
+          <ba:CancelStudyActivity.StudyId>
+            <p1:InArgument x:TypeArguments="x:Int32">
+              <mca:CSharpValue x:TypeArguments="x:Int32">studyid</mca:CSharpValue>
+            </p1:InArgument>
+          </ba:CancelStudyActivity.StudyId>
+          <sap2010:WorkflowViewState.IdRef>CancelStudyActivity_1</sap2010:WorkflowViewState.IdRef>
+        </ba:CancelStudyActivity>
+        <p1:Assign>
+          <p1:Assign.To>
+            <p1:OutArgument x:TypeArguments="bde:StudyState">
+              <mca:CSharpReference x:TypeArguments="bde:StudyState">state</mca:CSharpReference>
+            </p1:OutArgument>
+          </p1:Assign.To>
+          <p1:Assign.Value>
+            <p1:InArgument x:TypeArguments="bde:StudyState">
+              <mca:CSharpValue x:TypeArguments="bde:StudyState">BrandAnalytics.Data.Enums.StudyState.Canceled</mca:CSharpValue>
+            </p1:InArgument>
+          </p1:Assign.Value>
+          <sap2010:WorkflowViewState.IdRef>Assign_2</sap2010:WorkflowViewState.IdRef>
+        </p1:Assign>
+        <SendReply Request="{x:Reference __ReferenceID2}" Action="http://tempuri.org/IBrandAnalyticsClientService/CancelStudyResponse" DisplayName="CancelStudy_SendReply" sap2010:WorkflowViewState.IdRef="SendReply_4">
+          <SendParametersContent />
+        </SendReply>
+      </p1:Sequence>
     </p1:Parallel>
-    <sads:DebugSymbol.Symbol>d2ZDOlxHaXQtSVNFTFxDT1NcVHJhYmFsaG8gUHJhdGljb1wwMiAtIENvZGlnb1xCcmFuZEFuYWx5dGljc1xCcmFuZEFuYWx5dGljc1xCcmFuZEFuYWx5dGljc1NlcnZpY2UueGFtbHgaEQO3AREBAUEFtQETAQJCB40BFQEfjgEHtAEVAQNHCV4TAWBfCW8jAU1wCXkhAUB6CYUBFQEzhgEJjAEVASCSAQmsARMBFK0BCbMBFQEESg9KXAFzWA9YXQFtURNRYAFnWw9bWQFhbA9sVQFaYg9iWQFUZw9nWwFOcw9zXAFHdw13XQFBggEPggF/ATp9D31gATSJAQ+JAVMBIZ0BD50BXAEapAETpAFgARWwAQ+wAV0BBQ==</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d2ZDOlxHaXQtSVNFTFxDT1NcVHJhYmFsaG8gUHJhdGljb1wwMiAtIENvZGlnb1xCcmFuZEFuYWx5dGljc1xCcmFuZEFuYWx5dGljc1xCcmFuZEFuYWx5dGljc1NlcnZpY2UueGFtbHgkEQPvAREBAUEF7QETAQJCB40BFQFHjgEHtAEVASu1AQfsARUBA0cJXhMCiAFfCW8jAXVwCXkhAWh6CYUBFQFbhgEJjAEVAUiSAQmsARMBPK0BCbMBFQEsuQEJ0wETASDUAQnbASIBGtwBCegBFQEP6QEJ6wEVAQRKD0pcApsBWA9YXQKVAVETUWACjwFbD1tZAokBbA9sVQKCAWIPYlkBfGcPZ1sBdnMPc1wBb3cNd10BaYIBD4IBfwFifQ99YAFciQEPiQFTAUmdAQ+dAVwBQqQBE6QBYAE9sAEPsAFdAS3EAQ/EAVwBJssBE8sBYAEh1wEP1wFTARvkAQ/kAYABARXfAQ/fAWABEA==</sads:DebugSymbol.Symbol>
   </p1:Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
@@ -207,15 +263,27 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Parallel_1" sap:VirtualizedContainerService.HintSize="708,683" />
-      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="730,807">
+      <sap2010:ViewStateData Id="Receive_4" sap:VirtualizedContainerService.HintSize="255,86" />
+      <sap2010:ViewStateData Id="CancelStudyActivity_1" sap:VirtualizedContainerService.HintSize="255,22" />
+      <sap2010:ViewStateData Id="Assign_2" sap:VirtualizedContainerService.HintSize="255,62" />
+      <sap2010:ViewStateData Id="SendReply_4" sap:VirtualizedContainerService.HintSize="255,86" />
+      <sap2010:ViewStateData Id="Sequence_5" sap:VirtualizedContainerService.HintSize="277,637">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Type Type="bc:IBrandAnalyticsClientService" x:Key="contractType" />
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Parallel_1" sap:VirtualizedContainerService.HintSize="1025,683" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="1047,807">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="WorkflowService_1" sap:VirtualizedContainerService.HintSize="760,877">
+      <sap2010:ViewStateData Id="WorkflowService_1" sap:VirtualizedContainerService.HintSize="1077,877">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="ShouldCollapseAll">False</x:Boolean>
