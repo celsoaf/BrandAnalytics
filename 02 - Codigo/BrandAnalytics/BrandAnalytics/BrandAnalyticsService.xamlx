@@ -2,6 +2,7 @@
  xmlns="http://schemas.microsoft.com/netfx/2009/xaml/servicemodel"
  xmlns:ba="clr-namespace:BrandAnalytics.Activities;assembly=BrandAnalytics"
  xmlns:bc="clr-namespace:BrandAnalytics.Contracts;assembly=BrandAnalytics"
+ xmlns:bde="clr-namespace:BrandAnalytics.Data.Enums;assembly=BrandAnalytics.Data"
  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
  xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities"
  xmlns:p="http://tempuri.org/"
@@ -20,6 +21,7 @@
         <x:String>System.Data</x:String>
         <x:String>System.Linq</x:String>
         <x:String>System.Text</x:String>
+        <x:String>BrandAnalytics.Data.Enums</x:String>
       </sco:Collection>
     </p1:TextExpression.Namespaces>
     <p1:TextExpression.References>
@@ -57,6 +59,7 @@
     <p1:Sequence.Variables>
       <p1:Variable x:TypeArguments="CorrelationHandle" Name="handle" />
       <p1:Variable x:TypeArguments="x:Int32" Name="studyid" />
+      <p1:Variable x:TypeArguments="bde:StudyState" Name="state" />
     </p1:Sequence.Variables>
     <p1:Sequence DisplayName="RequestStudy_ReceiveAndSendReply" sap2010:WorkflowViewState.IdRef="Sequence_1">
       <p1:Sequence.Variables>
@@ -112,29 +115,37 @@
         </SendParametersContent>
       </SendReply>
     </p1:Sequence>
-    <sads:DebugSymbol.Symbol>d2ZDOlxHaXQtSVNFTFxDT1NcVHJhYmFsaG8gUHJhdGljb1wwMiAtIENvZGlnb1xCcmFuZEFuYWx5dGljc1xCcmFuZEFuYWx5dGljc1xCcmFuZEFuYWx5dGljc1NlcnZpY2UueGFtbHgNDwN0EQEBPQVyEwECQgdZEQEjWgdqIQETawdxEwEDRQ1FWgEzUw1TWwEuTBFMXgEpVg1WVwEkXQ1dWQEeZw1nUwEZYg1iVwEUbg1uUQEE</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d2ZDOlxHaXQtSVNFTFxDT1NcVHJhYmFsaG8gUHJhdGljb1wwMiAtIENvZGlnb1xCcmFuZEFuYWx5dGljc1xCcmFuZEFuYWx5dGljc1xCcmFuZEFuYWx5dGljc1NlcnZpY2UueGFtbHgNEAN3EQEBQAV1EwECRQdcEQEpXQdtIQEWbgd0EwEDSA1IWgE8Vg1WWwE2TxFPXgEwWQ1ZVwEqYA1gWQEjag1qUwEdZQ1lVwEXcQ1xUQEE</sads:DebugSymbol.Symbol>
   </p1:Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
       <sap2010:ViewStateData Id="Receive_1" sap:VirtualizedContainerService.HintSize="255,86" />
       <sap2010:ViewStateData Id="SaveNewStudyActivity_1" sap:VirtualizedContainerService.HintSize="255,22" />
       <sap2010:ViewStateData Id="SendReply_1" sap:VirtualizedContainerService.HintSize="255,86" />
-      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="277,398">
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="200,51">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Type Type="bc:IBrandAnalyticsClientService" x:Key="contractType" />
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="299,522">
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="222,175">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="WorkflowService_1" sap:VirtualizedContainerService.HintSize="329,592" />
+      <sap2010:ViewStateData Id="WorkflowService_1" sap:VirtualizedContainerService.HintSize="252,245">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="ShouldCollapseAll">False</x:Boolean>
+            <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
     </sap2010:ViewStateManager>
   </sap2010:WorkflowViewState.ViewStateManager>
 </WorkflowService>

@@ -286,6 +286,9 @@
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <None Include="Service References\BrandAnaliticsClient\BrandAnalyticsService.disco" />
+    <None Include="Service References\BrandAnaliticsClient\BrandAnalyticsService.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\BrandAnaliticsClient\configuration91.svcinfo" />
     <None Include="Service References\BrandAnaliticsClient\configuration.svcinfo" />
     <None Include="Service References\BrandAnaliticsClient\Reference.svcmap">
@@ -331,15 +334,16 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\StudyClient\Index.cshtml" />
+    <Content Include="Views\StudyClient\Create.cshtml" />
+    <Content Include="Views\StudyClient\Cancel.cshtml" />
     <None Include="Service References\BrandAnaliticsClient\BrandAnalyticsService.wsdl" />
-    <None Include="Service References\BrandAnaliticsClient\BrandAnalyticsService.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\BrandAnaliticsClient\BrandAnalyticsService1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Views\StudyClient\Index.cshtml" />
-    <Content Include="Views\StudyClient\Create.cshtml" />
+    <None Include="Service References\BrandAnaliticsClient\BrandAnalyticsService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
