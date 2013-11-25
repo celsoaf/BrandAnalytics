@@ -12,7 +12,7 @@ namespace BrandAnalytics.Activities
     {
         public InArgument<string> UserName { get; set; }
         public InOutArgument<string> Mark { get; set; }
-        public OutArgument<int> ActivityId { get; set; }
+        public OutArgument<int> StudyId { get; set; }
 
         protected override void Execute(CodeActivityContext context)
         {
@@ -34,7 +34,7 @@ namespace BrandAnalytics.Activities
 
                     ctx.SaveChanges();
 
-                    ActivityId.Set(context, study.Id);
+                    StudyId.Set(context, study.Id);
                 }
             }
         }

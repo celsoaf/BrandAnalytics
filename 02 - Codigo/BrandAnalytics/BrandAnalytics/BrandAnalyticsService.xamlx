@@ -62,123 +62,124 @@
       <p1:Variable x:TypeArguments="x:Int32" Name="studyid" />
       <p1:Variable x:TypeArguments="bde:StudyState" Name="state" />
     </p1:Sequence.Variables>
-    <p1:Sequence DisplayName="RequestStudy_ReceiveAndSendReply" sap2010:WorkflowViewState.IdRef="Sequence_1">
-      <p1:Sequence.Variables>
-        <p1:Variable x:TypeArguments="x:String" Name="userName" />
-        <p1:Variable x:TypeArguments="x:String" Name="mark" />
-      </p1:Sequence.Variables>
-      <Receive x:Name="__ReferenceID0" Action="http://tempuri.org/IBrandAnalyticsClientService/RequestStudy" CanCreateInstance="True" DisplayName="RequestStudy_Receive" sap2010:WorkflowViewState.IdRef="Receive_1" OperationName="RequestStudy" ProtectionLevel="None" ServiceContractName="p:IBrandAnalyticsClientService">
-        <Receive.CorrelatesWith>
-          <p1:InArgument x:TypeArguments="CorrelationHandle">
-            <mca:CSharpValue x:TypeArguments="CorrelationHandle">handle</mca:CSharpValue>
+    <p1:Parallel sap2010:WorkflowViewState.IdRef="Parallel_1">
+      <p1:Sequence DisplayName="RequestStudy_ReceiveAndSendReply" sap2010:WorkflowViewState.IdRef="Sequence_1">
+        <p1:Sequence.Variables>
+          <p1:Variable x:TypeArguments="x:String" Name="userName" />
+          <p1:Variable x:TypeArguments="x:String" Name="mark" />
+        </p1:Sequence.Variables>
+        <Receive x:Name="__ReferenceID0" Action="http://tempuri.org/IBrandAnalyticsClientService/RequestStudy" CanCreateInstance="True" DisplayName="RequestStudy_Receive" sap2010:WorkflowViewState.IdRef="Receive_1" OperationName="RequestStudy" ProtectionLevel="None" ServiceContractName="p:IBrandAnalyticsClientService">
+          <Receive.CorrelatesWith>
+            <p1:InArgument x:TypeArguments="CorrelationHandle">
+              <mca:CSharpValue x:TypeArguments="CorrelationHandle">handle</mca:CSharpValue>
+            </p1:InArgument>
+          </Receive.CorrelatesWith>
+          <Receive.CorrelationInitializers>
+            <RequestReplyCorrelationInitializer>
+              <RequestReplyCorrelationInitializer.CorrelationHandle>
+                <p1:InArgument x:TypeArguments="CorrelationHandle">
+                  <mca:CSharpValue x:TypeArguments="CorrelationHandle">handle</mca:CSharpValue>
+                </p1:InArgument>
+              </RequestReplyCorrelationInitializer.CorrelationHandle>
+            </RequestReplyCorrelationInitializer>
+          </Receive.CorrelationInitializers>
+          <ReceiveParametersContent>
+            <p1:OutArgument x:TypeArguments="x:String" x:Key="userName">
+              <mca:CSharpReference x:TypeArguments="x:String">userName</mca:CSharpReference>
+            </p1:OutArgument>
+            <p1:OutArgument x:TypeArguments="x:String" x:Key="mark">
+              <mca:CSharpReference x:TypeArguments="x:String">mark</mca:CSharpReference>
+            </p1:OutArgument>
+          </ReceiveParametersContent>
+        </Receive>
+        <ba:SaveNewStudyActivity sap2010:WorkflowViewState.IdRef="SaveNewStudyActivity_1">
+          <ba:SaveNewStudyActivity.Mark>
+            <p1:InOutArgument x:TypeArguments="x:String">
+              <mca:CSharpReference x:TypeArguments="x:String">mark</mca:CSharpReference>
+            </p1:InOutArgument>
+          </ba:SaveNewStudyActivity.Mark>
+          <ba:SaveNewStudyActivity.StudyId>
+            <p1:OutArgument x:TypeArguments="x:Int32">
+              <mca:CSharpReference x:TypeArguments="x:Int32">studyid</mca:CSharpReference>
+            </p1:OutArgument>
+          </ba:SaveNewStudyActivity.StudyId>
+          <ba:SaveNewStudyActivity.UserName>
+            <p1:InArgument x:TypeArguments="x:String">
+              <mca:CSharpValue x:TypeArguments="x:String">userName</mca:CSharpValue>
+            </p1:InArgument>
+          </ba:SaveNewStudyActivity.UserName>
+        </ba:SaveNewStudyActivity>
+        <InitializeCorrelation sap2010:WorkflowViewState.IdRef="InitializeCorrelation_1">
+          <InitializeCorrelation.Correlation>
+            <p1:InArgument x:TypeArguments="CorrelationHandle">
+              <mca:CSharpValue x:TypeArguments="CorrelationHandle">handle</mca:CSharpValue>
+            </p1:InArgument>
+          </InitializeCorrelation.Correlation>
+          <p1:InArgument x:TypeArguments="x:String" x:Key="token">
+            <mca:CSharpValue x:TypeArguments="x:String">studyid.ToString()</mca:CSharpValue>
           </p1:InArgument>
-        </Receive.CorrelatesWith>
-        <Receive.CorrelationInitializers>
-          <RequestReplyCorrelationInitializer>
-            <RequestReplyCorrelationInitializer.CorrelationHandle>
-              <p1:InArgument x:TypeArguments="CorrelationHandle">
-                <mca:CSharpValue x:TypeArguments="CorrelationHandle">handle</mca:CSharpValue>
-              </p1:InArgument>
-            </RequestReplyCorrelationInitializer.CorrelationHandle>
-          </RequestReplyCorrelationInitializer>
-        </Receive.CorrelationInitializers>
-        <ReceiveParametersContent>
-          <p1:OutArgument x:TypeArguments="x:String" x:Key="userName">
-            <mca:CSharpReference x:TypeArguments="x:String">userName</mca:CSharpReference>
-          </p1:OutArgument>
-          <p1:OutArgument x:TypeArguments="x:String" x:Key="mark">
-            <mca:CSharpReference x:TypeArguments="x:String">mark</mca:CSharpReference>
-          </p1:OutArgument>
-        </ReceiveParametersContent>
-      </Receive>
-      <ba:SaveNewStudyActivity sap2010:WorkflowViewState.IdRef="SaveNewStudyActivity_1">
-        <ba:SaveNewStudyActivity.ActivityId>
-          <p1:OutArgument x:TypeArguments="x:Int32">
-            <mca:CSharpReference x:TypeArguments="x:Int32">studyid</mca:CSharpReference>
-          </p1:OutArgument>
-        </ba:SaveNewStudyActivity.ActivityId>
-        <ba:SaveNewStudyActivity.Mark>
-          <p1:InOutArgument x:TypeArguments="x:String">
-            <mca:CSharpReference x:TypeArguments="x:String">mark</mca:CSharpReference>
-          </p1:InOutArgument>
-        </ba:SaveNewStudyActivity.Mark>
-        <ba:SaveNewStudyActivity.UserName>
-          <p1:InArgument x:TypeArguments="x:String">
-            <mca:CSharpValue x:TypeArguments="x:String">userName</mca:CSharpValue>
-          </p1:InArgument>
-        </ba:SaveNewStudyActivity.UserName>
-      </ba:SaveNewStudyActivity>
-      <InitializeCorrelation sap2010:WorkflowViewState.IdRef="InitializeCorrelation_1">
-        <InitializeCorrelation.Correlation>
-          <p1:InArgument x:TypeArguments="CorrelationHandle">
-            <mca:CSharpValue x:TypeArguments="CorrelationHandle">handle</mca:CSharpValue>
-          </p1:InArgument>
-        </InitializeCorrelation.Correlation>
-        <p1:InArgument x:TypeArguments="x:String" x:Key="token">
-          <mca:CSharpValue x:TypeArguments="x:String">studyid.ToString()</mca:CSharpValue>
-        </p1:InArgument>
-      </InitializeCorrelation>
-      <p1:Assign>
-        <p1:Assign.To>
-          <p1:OutArgument x:TypeArguments="bde:StudyState">
-            <mca:CSharpReference x:TypeArguments="bde:StudyState">state</mca:CSharpReference>
-          </p1:OutArgument>
-        </p1:Assign.To>
-        <p1:Assign.Value>
-          <p1:InArgument x:TypeArguments="bde:StudyState">
-            <mca:CSharpValue x:TypeArguments="bde:StudyState">BrandAnalytics.Data.Enums.StudyState.Waiting</mca:CSharpValue>
-          </p1:InArgument>
-        </p1:Assign.Value>
-        <sap2010:WorkflowViewState.IdRef>Assign_1</sap2010:WorkflowViewState.IdRef>
-      </p1:Assign>
-      <SendReply Request="{x:Reference __ReferenceID0}" Action="http://tempuri.org/IBrandAnalyticsClientService/RequestStudyResponse" DisplayName="RequestStudy_SendReply" sap2010:WorkflowViewState.IdRef="SendReply_1">
-        <SendParametersContent>
-          <p1:InArgument x:TypeArguments="x:Int32" x:Key="RequestStudyResult">
-            <mca:CSharpValue x:TypeArguments="x:Int32">studyid</mca:CSharpValue>
-          </p1:InArgument>
-        </SendParametersContent>
-      </SendReply>
-    </p1:Sequence>
-    <p1:Sequence DisplayName="GetState_ReceiveAndSendReply" sap2010:WorkflowViewState.IdRef="Sequence_4">
-      <p1:Sequence.Variables>
-        <p1:Variable x:TypeArguments="CorrelationHandle" Name="__handle" />
-      </p1:Sequence.Variables>
-      <Receive x:Name="__ReferenceID1" Action="http://tempuri.org/IBrandAnalyticsClientService/GetState" DisplayName="GetState_Receive" sap2010:WorkflowViewState.IdRef="Receive_3" OperationName="GetState" ProtectionLevel="None" ServiceContractName="p:IBrandAnalyticsClientService">
-        <Receive.CorrelatesOn>
-          <XPathMessageQuery x:Key="token">
-            <XPathMessageQuery.Namespaces>
-              <ssx:XPathMessageContextMarkup>
-                <x:String x:Key="xgSc">http://tempuri.org/</x:String>
-              </ssx:XPathMessageContextMarkup>
-            </XPathMessageQuery.Namespaces>sm:body()/xgSc:GetState/xgSc:token</XPathMessageQuery>
-        </Receive.CorrelatesOn>
-        <Receive.CorrelatesWith>
-          <p1:InArgument x:TypeArguments="CorrelationHandle">
-            <mca:CSharpValue x:TypeArguments="CorrelationHandle">handle</mca:CSharpValue>
-          </p1:InArgument>
-        </Receive.CorrelatesWith>
-        <Receive.CorrelationInitializers>
-          <RequestReplyCorrelationInitializer>
-            <RequestReplyCorrelationInitializer.CorrelationHandle>
-              <p1:InArgument x:TypeArguments="CorrelationHandle">
-                <mca:CSharpValue x:TypeArguments="CorrelationHandle">handle</mca:CSharpValue>
-              </p1:InArgument>
-            </RequestReplyCorrelationInitializer.CorrelationHandle>
-          </RequestReplyCorrelationInitializer>
-        </Receive.CorrelationInitializers>
-        <ReceiveParametersContent>
-          <p1:OutArgument x:TypeArguments="x:Int32" x:Key="token" />
-        </ReceiveParametersContent>
-      </Receive>
-      <SendReply Request="{x:Reference __ReferenceID1}" Action="http://tempuri.org/IBrandAnalyticsClientService/GetStateResponse" DisplayName="GetState_SendReply" sap2010:WorkflowViewState.IdRef="SendReply_3">
-        <SendParametersContent>
-          <p1:InArgument x:TypeArguments="x:String" x:Key="GetStateResult">
-            <mca:CSharpValue x:TypeArguments="x:String">state.ToString()</mca:CSharpValue>
-          </p1:InArgument>
-        </SendParametersContent>
-      </SendReply>
-    </p1:Sequence>
-    <sads:DebugSymbol.Symbol>d2ZDOlxHaXQtSVNFTFxDT1NcVHJhYmFsaG8gUHJhdGljb1wwMiAtIENvZGlnb1xCcmFuZEFuYWx5dGljc1xCcmFuZEFuYWx5dGljc1xCcmFuZEFuYWx5dGljc1NlcnZpY2UueGFtbHgZEQO2AREBAUEFjQETAR6OAQW0ARMBAkYHXREBX14HbiEBTG8HeB8BP3kHhQETATKGAQeMARMBH5IBB6wBEQETrQEHswETAQNJDUlaAXJXDVdbAWxQEVBeAWZaDVpXAWBhDWFZAVlrDWtTAVNmDWZXAU1yDXJaAUZ2C3ZbAUCBAQ2BAX0BOXwNfF4BM4kBDYkBUQEgnQENnQFaARmkARGkAV4BFLABDbABWwEE</sads:DebugSymbol.Symbol>
+        </InitializeCorrelation>
+        <p1:Assign sap2010:WorkflowViewState.IdRef="Assign_1">
+          <p1:Assign.To>
+            <p1:OutArgument x:TypeArguments="bde:StudyState">
+              <mca:CSharpReference x:TypeArguments="bde:StudyState">state</mca:CSharpReference>
+            </p1:OutArgument>
+          </p1:Assign.To>
+          <p1:Assign.Value>
+            <p1:InArgument x:TypeArguments="bde:StudyState">
+              <mca:CSharpValue x:TypeArguments="bde:StudyState">BrandAnalytics.Data.Enums.StudyState.Waiting</mca:CSharpValue>
+            </p1:InArgument>
+          </p1:Assign.Value>
+        </p1:Assign>
+        <SendReply Request="{x:Reference __ReferenceID0}" Action="http://tempuri.org/IBrandAnalyticsClientService/RequestStudyResponse" DisplayName="RequestStudy_SendReply" sap2010:WorkflowViewState.IdRef="SendReply_1">
+          <SendParametersContent>
+            <p1:InArgument x:TypeArguments="x:Int32" x:Key="RequestStudyResult">
+              <mca:CSharpValue x:TypeArguments="x:Int32">studyid</mca:CSharpValue>
+            </p1:InArgument>
+          </SendParametersContent>
+        </SendReply>
+      </p1:Sequence>
+      <p1:Sequence DisplayName="GetState_ReceiveAndSendReply" sap2010:WorkflowViewState.IdRef="Sequence_4">
+        <p1:Sequence.Variables>
+          <p1:Variable x:TypeArguments="CorrelationHandle" Name="__handle" />
+        </p1:Sequence.Variables>
+        <Receive x:Name="__ReferenceID1" Action="http://tempuri.org/IBrandAnalyticsClientService/GetState" DisplayName="GetState_Receive" sap2010:WorkflowViewState.IdRef="Receive_3" OperationName="GetState" ProtectionLevel="None" ServiceContractName="p:IBrandAnalyticsClientService">
+          <Receive.CorrelatesOn>
+            <XPathMessageQuery x:Key="token">
+              <XPathMessageQuery.Namespaces>
+                <ssx:XPathMessageContextMarkup>
+                  <x:String x:Key="xgSc">http://tempuri.org/</x:String>
+                </ssx:XPathMessageContextMarkup>
+              </XPathMessageQuery.Namespaces>sm:body()/xgSc:GetState/xgSc:token</XPathMessageQuery>
+          </Receive.CorrelatesOn>
+          <Receive.CorrelatesWith>
+            <p1:InArgument x:TypeArguments="CorrelationHandle">
+              <mca:CSharpValue x:TypeArguments="CorrelationHandle">handle</mca:CSharpValue>
+            </p1:InArgument>
+          </Receive.CorrelatesWith>
+          <Receive.CorrelationInitializers>
+            <RequestReplyCorrelationInitializer>
+              <RequestReplyCorrelationInitializer.CorrelationHandle>
+                <p1:InArgument x:TypeArguments="CorrelationHandle">
+                  <mca:CSharpValue x:TypeArguments="CorrelationHandle">handle</mca:CSharpValue>
+                </p1:InArgument>
+              </RequestReplyCorrelationInitializer.CorrelationHandle>
+            </RequestReplyCorrelationInitializer>
+          </Receive.CorrelationInitializers>
+          <ReceiveParametersContent>
+            <p1:OutArgument x:TypeArguments="x:Int32" x:Key="token" />
+          </ReceiveParametersContent>
+        </Receive>
+        <SendReply Request="{x:Reference __ReferenceID1}" Action="http://tempuri.org/IBrandAnalyticsClientService/GetStateResponse" DisplayName="GetState_SendReply" sap2010:WorkflowViewState.IdRef="SendReply_3">
+          <SendParametersContent>
+            <p1:InArgument x:TypeArguments="x:String" x:Key="GetStateResult">
+              <mca:CSharpValue x:TypeArguments="x:String">state.ToString()</mca:CSharpValue>
+            </p1:InArgument>
+          </SendParametersContent>
+        </SendReply>
+      </p1:Sequence>
+    </p1:Parallel>
+    <sads:DebugSymbol.Symbol>d2ZDOlxHaXQtSVNFTFxDT1NcVHJhYmFsaG8gUHJhdGljb1wwMiAtIENvZGlnb1xCcmFuZEFuYWx5dGljc1xCcmFuZEFuYWx5dGljc1xCcmFuZEFuYWx5dGljc1NlcnZpY2UueGFtbHgaEQO3AREBAUEFtQETAQJCB40BFQEfjgEHtAEVAQNHCV4TAWBfCW8jAU1wCXkhAUB6CYUBFQEzhgEJjAEVASCSAQmsARMBFK0BCbMBFQEESg9KXAFzWA9YXQFtURNRYAFnWw9bWQFhbA9sVQFaYg9iWQFUZw9nWwFOcw9zXAFHdw13XQFBggEPggF/ATp9D31gATSJAQ+JAVMBIZ0BD50BXAEapAETpAFgARWwAQ+wAV0BBQ==</sads:DebugSymbol.Symbol>
   </p1:Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
@@ -198,7 +199,7 @@
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="Receive_3" sap:VirtualizedContainerService.HintSize="255,86" />
       <sap2010:ViewStateData Id="SendReply_3" sap:VirtualizedContainerService.HintSize="255,86" />
-      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="277,336">
+      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="277,637">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Type Type="bc:IBrandAnalyticsClientService" x:Key="contractType" />
@@ -206,14 +207,15 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="299,1137">
+      <sap2010:ViewStateData Id="Parallel_1" sap:VirtualizedContainerService.HintSize="708,683" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="730,807">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="WorkflowService_1" sap:VirtualizedContainerService.HintSize="329,1207">
+      <sap2010:ViewStateData Id="WorkflowService_1" sap:VirtualizedContainerService.HintSize="760,877">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="ShouldCollapseAll">False</x:Boolean>
