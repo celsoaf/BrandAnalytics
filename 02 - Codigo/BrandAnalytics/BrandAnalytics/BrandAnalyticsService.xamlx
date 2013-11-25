@@ -107,6 +107,16 @@
           </p1:InArgument>
         </ba:SaveNewStudyActivity.UserName>
       </ba:SaveNewStudyActivity>
+      <InitializeCorrelation sap2010:WorkflowViewState.IdRef="InitializeCorrelation_1">
+        <InitializeCorrelation.Correlation>
+          <p1:InArgument x:TypeArguments="CorrelationHandle">
+            <mca:CSharpValue x:TypeArguments="CorrelationHandle">handle</mca:CSharpValue>
+          </p1:InArgument>
+        </InitializeCorrelation.Correlation>
+        <p1:InArgument x:TypeArguments="x:String" x:Key="token">
+          <mca:CSharpValue x:TypeArguments="x:String">studyid.ToString()</mca:CSharpValue>
+        </p1:InArgument>
+      </InitializeCorrelation>
       <SendReply Request="{x:Reference __ReferenceID0}" Action="http://tempuri.org/IBrandAnalyticsClientService/RequestStudyResponse" DisplayName="RequestStudy_SendReply" sap2010:WorkflowViewState.IdRef="SendReply_1">
         <SendParametersContent>
           <p1:InArgument x:TypeArguments="x:Int32" x:Key="RequestStudyResult">
@@ -115,30 +125,31 @@
         </SendParametersContent>
       </SendReply>
     </p1:Sequence>
-    <sads:DebugSymbol.Symbol>d2ZDOlxHaXQtSVNFTFxDT1NcVHJhYmFsaG8gUHJhdGljb1wwMiAtIENvZGlnb1xCcmFuZEFuYWx5dGljc1xCcmFuZEFuYWx5dGljc1xCcmFuZEFuYWx5dGljc1NlcnZpY2UueGFtbHgNEAN3EQEBQAV1EwECRQdcEQEpXQdtIQEWbgd0EwEDSA1IWgE8Vg1WWwE2TxFPXgEwWQ1ZVwEqYA1gWQEjag1qUwEdZQ1lVwEXcQ1xUQEE</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d2ZDOlxHaXQtSVNFTFxDT1NcVHJhYmFsaG8gUHJhdGljb1wwMiAtIENvZGlnb1xCcmFuZEFuYWx5dGljc1xCcmFuZEFuYWx5dGljc1xCcmFuZEFuYWx5dGljc1NlcnZpY2UueGFtbHgQEAOBAREBAUAFfxMBAkUHXBEBNl0HbSEBI24Hdx8BFngHfhMBA0gNSFoBSVYNVlsBQ08RT14BPVkNWVcBN2ANYFkBMGoNalMBKmUNZVcBJHENcVoBHXULdVsBF3sNe1EBBA==</sads:DebugSymbol.Symbol>
   </p1:Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
       <sap2010:ViewStateData Id="Receive_1" sap:VirtualizedContainerService.HintSize="255,86" />
       <sap2010:ViewStateData Id="SaveNewStudyActivity_1" sap:VirtualizedContainerService.HintSize="255,22" />
+      <sap2010:ViewStateData Id="InitializeCorrelation_1" sap:VirtualizedContainerService.HintSize="255,97" />
       <sap2010:ViewStateData Id="SendReply_1" sap:VirtualizedContainerService.HintSize="255,86" />
-      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="200,51">
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="277,535">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Type Type="bc:IBrandAnalyticsClientService" x:Key="contractType" />
-            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-            <x:Boolean x:Key="IsPinned">True</x:Boolean>
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="222,175">
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="299,659">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="WorkflowService_1" sap:VirtualizedContainerService.HintSize="252,245">
+      <sap2010:ViewStateData Id="WorkflowService_1" sap:VirtualizedContainerService.HintSize="329,729">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="ShouldCollapseAll">False</x:Boolean>
