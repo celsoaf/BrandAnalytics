@@ -23,13 +23,7 @@ namespace BrandAnalytics.Web.Controllers
                 var user = ctx.Clients.FirstOrDefault(c => c.UserName == userName);
                 if (user != null)
                 {
-                    list = user.Studies.Select(s => new StudyClientModel()
-                    {
-                        Id = s.Id,
-                        Mark = s.Mark,
-                        Start = s.Start,
-                        End = s.End
-                    })
+                    list = user.Studies.Select(TranslateStudie)
                     .ToList();
                 }
             }
@@ -89,13 +83,7 @@ namespace BrandAnalytics.Web.Controllers
             {
                 var model = ctx.Studies
                     .Where(s => s.Id == id)
-                    .Select(s => new StudyClientModel()
-                    {
-                        Id = s.Id,
-                        Mark = s.Mark,
-                        Start = s.Start,
-                        End = s.End
-                    })
+                    .Select(TranslateStudie)
                     .FirstOrDefault();
 
                 return View(model);
@@ -129,13 +117,7 @@ namespace BrandAnalytics.Web.Controllers
             {
                 var model = ctx.Studies
                     .Where(s => s.Id == id)
-                    .Select(s => new StudyClientModel()
-                    {
-                        Id = s.Id,
-                        Mark = s.Mark,
-                        Start = s.Start,
-                        End = s.End
-                    })
+                    .Select(TranslateStudie)
                     .FirstOrDefault();
 
                 return View(model);
@@ -174,6 +156,29 @@ namespace BrandAnalytics.Web.Controllers
             catch
             {
                 return View();
+            }
+        }
+
+        public StudyClientModel TranslateStudie(Study study)
+        {
+            using (var service = new BrandAnaliticsClient.BrandAnalyticsClientServiceClient())
+            {
+                var res = new StudyClientModel()
+                {
+                    Id=study.Id,
+                    Mark=study.Mark,
+                    Start=study.Start,
+                    End=study.End,
+                    State = study.State.ToString()
+                };
+
+                try
+                {
+                    res.State = service.GetState(study.Id);
+                }
+                catch { }
+
+                return res;
             }
         }
     }
