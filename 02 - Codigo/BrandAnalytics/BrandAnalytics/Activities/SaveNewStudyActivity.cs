@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using BrandAnalytics.Data.Models;
+using BrandAnalytics.Data.Enums;
 
 namespace BrandAnalytics.Activities
 {
@@ -25,7 +26,8 @@ namespace BrandAnalytics.Activities
                 {
                     var study = new Study()
                     {
-                        Mark=mark
+                        Mark = mark,
+                        State = StudyState.Waiting
                     };
 
                     client.Studies.Add(study);
