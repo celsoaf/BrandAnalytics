@@ -24,5 +24,11 @@ namespace BrandAnalytics.Data.Models
 
         [ForeignKey("Id")]
         public virtual StudyReport Report { get; set; }
+
+        [ForeignKey("Client")]
+        public string ClientUserName { get; set; }
+
+        [ForeignKey("ClientUserName")]
+        public Client Client { get; set; }
     }
 }
