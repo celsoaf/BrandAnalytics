@@ -51,6 +51,10 @@
     <Compile Include="Migrations\201311241229510_Initial.Designer.cs">
       <DependentUpon>201311241229510_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201311260121235_AddStudyUserName.cs" />
+    <Compile Include="Migrations\201311260121235_AddStudyUserName.Designer.cs">
+      <DependentUpon>201311260121235_AddStudyUserName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BrandAnalyticsDB.cs" />
     <Compile Include="Models\Client.cs" />
@@ -63,6 +67,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201311241229510_Initial.resx">
       <DependentUpon>201311241229510_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201311260121235_AddStudyUserName.resx">
+      <DependentUpon>201311260121235_AddStudyUserName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
