@@ -8,6 +8,7 @@ namespace BrandAnalytics.Data.Enums
 {
     public enum StudyState
     {
+        Initial = 0,
         Waiting = 1,
         Collecting = 2,
         Finished = 3,
