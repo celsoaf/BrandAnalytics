@@ -178,8 +178,9 @@ namespace BrandAnalytics.Web.Controllers
                 try
                 {
                     res.State = service.GetState(study.Id);
+                    res.Running = true;
                 }
-                catch { }
+                catch { res.Running = false; }
 
                 return res;
             }
