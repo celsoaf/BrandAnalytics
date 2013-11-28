@@ -10,9 +10,10 @@ namespace BrandAnalytics.Data.Models
 {
     public class StudyTopic
     {
-        [Key, Column(Order = 0)]
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        [Key, Column(Order = 1)]
+        
         public int StudyId { get; set; }
 
         public string Name { get; set; }

@@ -47,25 +47,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums\StudyState.cs" />
-    <Compile Include="Migrations\201311241229510_Initial.cs" />
-    <Compile Include="Migrations\201311241229510_Initial.Designer.cs">
-      <DependentUpon>201311241229510_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201311260121235_AddStudyUserName.cs" />
-    <Compile Include="Migrations\201311260121235_AddStudyUserName.Designer.cs">
-      <DependentUpon>201311260121235_AddStudyUserName.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201311280212045_StudyV2.cs" />
-    <Compile Include="Migrations\201311280212045_StudyV2.Designer.cs">
-      <DependentUpon>201311280212045_StudyV2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201311280212461_Employee.cs" />
-    <Compile Include="Migrations\201311280212461_Employee.Designer.cs">
-      <DependentUpon>201311280212461_Employee.cs</DependentUpon>
+    <Compile Include="Migrations\201311281804070_initial.cs" />
+    <Compile Include="Migrations\201311281804070_initial.Designer.cs">
+      <DependentUpon>201311281804070_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BrandAnalyticsDB.cs" />
     <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\Notification.cs" />
     <Compile Include="Models\Study.cs" />
     <Compile Include="Models\StudyReport.cs" />
     <Compile Include="Models\StudyTermReport.cs" />
@@ -73,22 +62,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201311241229510_Initial.resx">
-      <DependentUpon>201311241229510_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201311260121235_AddStudyUserName.resx">
-      <DependentUpon>201311260121235_AddStudyUserName.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201311280212045_StudyV2.resx">
-      <DependentUpon>201311280212045_StudyV2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201311280212461_Employee.resx">
-      <DependentUpon>201311280212461_Employee.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201311281804070_initial.resx">
+      <DependentUpon>201311281804070_initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

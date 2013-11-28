@@ -28,6 +28,13 @@ namespace BrandAnalytics.Data.Models
             modelBuilder.Entity<Study>()
                 .HasOptional(s => s.Report)
                 .WithRequired(r => r.Study);
+
+            modelBuilder.Entity<Client>()
+                .HasMany(c => c.Studies)
+                .WithRequired(s => s.Client);
+
+            modelBuilder.Entity<Study>()
+                .HasOptional(s => s.Employee);
         }
 
         public IDbSet<Client> Clients { get; set; }
@@ -35,5 +42,6 @@ namespace BrandAnalytics.Data.Models
         public IDbSet<StudyTopic> Topics { get; set; }
         public IDbSet<StudyReport> Reports { get; set; }
         public IDbSet<StudyTermReport> ReportTerms { get; set; }
+        public IDbSet<Notification> Notifications { get; set; }
     }
 }

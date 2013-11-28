@@ -14,7 +14,7 @@ namespace BrandAnalytics.Data.Models
         public int Id { get; set; }
         public int Tweets { get; set; }
         public int Authors { get; set; }
-        public IList<StudyTermReport> Terms { get; set; }
+        public virtual IList<StudyTermReport> Terms { get; set; }
 
         [ForeignKey("Id")]
         public virtual Study Study { get; set; }

@@ -17,5 +17,6 @@ namespace BrandAnalytics.Data.Models
         public string Email { get; set; }
 
         public virtual IList<Study> Studies { get; set; }
+        public virtual IList<Notification> Notifications { get; set; }
     }
 }

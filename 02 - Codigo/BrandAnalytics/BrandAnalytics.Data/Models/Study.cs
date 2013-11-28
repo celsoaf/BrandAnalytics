@@ -20,21 +20,13 @@ namespace BrandAnalytics.Data.Models
 
         public TimeSpan? Duration { get; set; }
 
-        public IList<StudyTopic> Topics { get; set; }
+        public virtual IList<StudyTopic> Topics { get; set; }
 
         [ForeignKey("Id")]
         public virtual StudyReport Report { get; set; }
 
-        [ForeignKey("Client")]
-        public string ClientUserName { get; set; }
+        public virtual Client Client { get; set; }
 
-        [ForeignKey("ClientUserName")]
-        public Client Client { get; set; }
-
-        [ForeignKey("Employee")]
-        public string EmployeeUserName { get; set; }
-
-        [ForeignKey("EmployeeUserName")]
-        public Client Employee { get; set; }
+        public virtual Client Employee { get; set; }
     }
 }
