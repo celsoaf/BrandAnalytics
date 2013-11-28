@@ -10,12 +10,12 @@ namespace TwitterSpy.Models
     public class ReportModel
     {
         [DataMember]
-        public string Mark { get; set; }
+        public IList<string> Topics { get; set; }
         [DataMember]
         public int Tweets { get; set; }
         [DataMember]
         public int Authors { get; set; }
         [DataMember]
-        public IList<ReportTermModel> Terms { get; set; }
+        public IList<string> Terms { get; set; }
     }
 }
