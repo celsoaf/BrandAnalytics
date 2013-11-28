@@ -10,6 +10,6 @@ namespace BrandAnalytics.Contracts
     [ServiceContract]
     public interface IBrandAnalyticsInternalService
     {
-        void SpyTopics(int studyid, int[] topicIds, DateTime start, DateTime end);
+        void SpyTopics(int studyid, string[] topics, TimeSpan duration);
     }
 }
