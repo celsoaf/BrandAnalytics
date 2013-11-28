@@ -13,7 +13,7 @@ namespace BrandAnalytics.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201311280120450_StudyV2"; }
+            get { return "201311280212045_StudyV2"; }
         }
         
         string IMigrationMetadata.Source

@@ -55,9 +55,13 @@
     <Compile Include="Migrations\201311260121235_AddStudyUserName.Designer.cs">
       <DependentUpon>201311260121235_AddStudyUserName.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201311280120450_StudyV2.cs" />
-    <Compile Include="Migrations\201311280120450_StudyV2.Designer.cs">
-      <DependentUpon>201311280120450_StudyV2.cs</DependentUpon>
+    <Compile Include="Migrations\201311280212045_StudyV2.cs" />
+    <Compile Include="Migrations\201311280212045_StudyV2.Designer.cs">
+      <DependentUpon>201311280212045_StudyV2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201311280212461_Employee.cs" />
+    <Compile Include="Migrations\201311280212461_Employee.Designer.cs">
+      <DependentUpon>201311280212461_Employee.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BrandAnalyticsDB.cs" />
@@ -75,8 +79,11 @@
     <EmbeddedResource Include="Migrations\201311260121235_AddStudyUserName.resx">
       <DependentUpon>201311260121235_AddStudyUserName.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201311280120450_StudyV2.resx">
-      <DependentUpon>201311280120450_StudyV2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201311280212045_StudyV2.resx">
+      <DependentUpon>201311280212045_StudyV2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201311280212461_Employee.resx">
+      <DependentUpon>201311280212461_Employee.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
