@@ -11,7 +11,8 @@ namespace BrandAnalytics.Data.Enums
         Initial = 0,
         Waiting = 1,
         Collecting = 2,
-        Finished = 3,
-        Canceled = 4
+        Collected = 3,
+        Finished = 4,
+        Canceled = 5
     }
 }
