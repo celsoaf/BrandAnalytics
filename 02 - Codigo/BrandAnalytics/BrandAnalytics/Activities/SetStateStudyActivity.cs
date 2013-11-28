@@ -8,9 +8,10 @@ using BrandAnalytics.Data.Models;
 
 namespace BrandAnalytics.Activities
 {
-    public class CancelStudyActivity : CodeActivity
+    public class SetStateStudyActivity : CodeActivity
     {
         public InArgument<int> StudyId { get; set; }
+        public InArgument<StudyState> State { get; set; }
 
         protected override void Execute(CodeActivityContext context)
         {
@@ -21,7 +22,7 @@ namespace BrandAnalytics.Activities
                 var study = ctx.Studies.FirstOrDefault(s => s.Id == id);
                 if (study != null)
                 {
-                    study.State = StudyState.Canceled;
+                    study.State = State.Get(context);
                     ctx.SaveChanges();
                 }
             }
