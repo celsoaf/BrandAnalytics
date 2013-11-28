@@ -168,10 +168,9 @@ namespace BrandAnalytics.Web.Controllers
             {
                 var res = new StudyClientModel()
                 {
-                    Id=study.Id,
-                    Mark=study.Mark,
-                    Start=study.Start,
-                    End=study.End,
+                    Id = study.Id,
+                    Mark = study.Mark,
+                    Duration = study.Duration,
                     State = study.State.ToString()
                 };
 

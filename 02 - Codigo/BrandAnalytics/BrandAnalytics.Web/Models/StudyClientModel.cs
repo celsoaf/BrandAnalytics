@@ -16,9 +16,7 @@ namespace BrandAnalytics.Web.Models
 
         public string State { get; set; }
 
-        public DateTime? Start { get; set; }
-
-        public DateTime? End { get; set; }
+        public TimeSpan? Duration { get; set; }
 
         public bool Running { get; set; }
     }

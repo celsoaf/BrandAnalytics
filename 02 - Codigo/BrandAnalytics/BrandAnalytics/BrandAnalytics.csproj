@@ -92,6 +92,7 @@
     <Compile Include="Contracts\IBrandAnalyticsClientService.cs" />
     <Compile Include="Contracts\IBrandAnalyticsInternalService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Service Contracts\IBrandAnalyticsInternalService\contractTypeName" />
     <None Include="Service References\TwitterSpyService\TwitterSpyService2.xsd">
       <SubType>Designer</SubType>
     </None>
