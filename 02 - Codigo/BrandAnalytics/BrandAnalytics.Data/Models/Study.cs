@@ -30,5 +30,11 @@ namespace BrandAnalytics.Data.Models
 
         [ForeignKey("ClientUserName")]
         public Client Client { get; set; }
+
+        [ForeignKey("Employee")]
+        public string EmployeeUserName { get; set; }
+
+        [ForeignKey("EmployeeUserName")]
+        public Client Employee { get; set; }
     }
 }
