@@ -22,6 +22,7 @@
     <MetadataSource Address="http://localhost:1428/BrandAnalyticsService.xamlx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
+    <MetadataFile FileName="BrandAnalyticsService4.xsd" MetadataType="Schema" ID="9d87ae2b-9dc5-4e6b-88bf-ccb8c78d768c" SourceId="1" SourceUrl="http://localhost:1428/BrandAnalyticsService.xamlx?xsd=xsd2" />
     <MetadataFile FileName="BrandAnalyticsService1.xsd" MetadataType="Schema" ID="f52e7edc-31a8-4a70-8546-19fa0a35fcc4" SourceId="1" SourceUrl="http://localhost:1428/BrandAnalyticsService.xamlx?xsd=xsd0" />
     <MetadataFile FileName="BrandAnalyticsService.disco" MetadataType="Disco" ID="57994e0c-8ebb-435b-a09b-b3dc9126e58b" SourceId="1" SourceUrl="http://localhost:1428/BrandAnalyticsService.xamlx?disco" />
     <MetadataFile FileName="BrandAnalyticsService.wsdl" MetadataType="Wsdl" ID="2366a3ab-c8fe-45e2-b048-a9c62df085e3" SourceId="1" SourceUrl="http://localhost:1428/BrandAnalyticsService.xamlx?wsdl" />

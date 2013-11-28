@@ -8,11 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BrandAnalytics.Web.BrandAnaliticsClient {
+namespace BrandAnalytics.Web.BrandAnaliticsInternal {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="BrandAnaliticsClient.IBrandAnalyticsClientService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="BrandAnaliticsInternal.IBrandAnalyticsClientService")]
     public interface IBrandAnalyticsClientService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBrandAnalyticsClientService/GetState", ReplyAction="http://tempuri.org/IBrandAnalyticsClientService/GetStateResponse")]
@@ -35,12 +35,12 @@ namespace BrandAnalytics.Web.BrandAnaliticsClient {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IBrandAnalyticsClientServiceChannel : BrandAnalytics.Web.BrandAnaliticsClient.IBrandAnalyticsClientService, System.ServiceModel.IClientChannel {
+    public interface IBrandAnalyticsClientServiceChannel : BrandAnalytics.Web.BrandAnaliticsInternal.IBrandAnalyticsClientService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class BrandAnalyticsClientServiceClient : System.ServiceModel.ClientBase<BrandAnalytics.Web.BrandAnaliticsClient.IBrandAnalyticsClientService>, BrandAnalytics.Web.BrandAnaliticsClient.IBrandAnalyticsClientService {
+    public partial class BrandAnalyticsClientServiceClient : System.ServiceModel.ClientBase<BrandAnalytics.Web.BrandAnaliticsInternal.IBrandAnalyticsClientService>, BrandAnalytics.Web.BrandAnaliticsInternal.IBrandAnalyticsClientService {
         
         public BrandAnalyticsClientServiceClient() {
         }

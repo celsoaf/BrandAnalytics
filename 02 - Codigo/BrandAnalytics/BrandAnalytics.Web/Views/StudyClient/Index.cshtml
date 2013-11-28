@@ -24,10 +24,7 @@
             @Html.DisplayNameFor(model => model.Running)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Start)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.End)
+            @Html.DisplayNameFor(model => model.Duration)
         </th>
         <th></th>
     </tr>
@@ -47,10 +44,7 @@
                 @Html.DisplayFor(modelItem => item.Running)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Start)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.End)
+                @Html.DisplayFor(modelItem => item.Duration)
             </td>
             <td>
                 @Html.ActionLink("Details", "Details", new { id=item.Id }) |
