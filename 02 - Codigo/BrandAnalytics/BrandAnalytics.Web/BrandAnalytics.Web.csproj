@@ -188,7 +188,9 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NotificationController.cs" />
     <Compile Include="Controllers\StudyClientController.cs" />
+    <Compile Include="Controllers\StudyEmployeeController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -371,6 +373,9 @@
     <Content Include="Views\StudyClient\Create.cshtml" />
     <Content Include="Views\StudyClient\Delete.cshtml" />
     <Content Include="Views\StudyClient\Index.cshtml" />
+    <Content Include="Views\StudyEmployee\Index.cshtml" />
+    <Content Include="Views\Notification\Index.cshtml" />
+    <Content Include="Views\Notification\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

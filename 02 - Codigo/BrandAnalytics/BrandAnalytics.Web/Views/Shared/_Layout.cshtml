@@ -23,7 +23,15 @@
                             <li>@Html.ActionLink("Home", "Index", "Home")</li>
                             @if (User.Identity.IsAuthenticated)
                             {
-                                <li>@Html.ActionLink("Studies", "Index", "StudyClient")</li>
+                                <li>@Html.ActionLink("Client Studies", "Index", "StudyClient")</li>
+                            }
+                            @if (User.IsInRole(BrandAnalytics.Web.Utils.ApplicationRoles.AuthorizationManage))
+                            {
+                                <li>@Html.ActionLink("Employee Studies", "Index", "StudyEmployee")</li>
+                            }
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li>@Html.ActionLink("Notifications", "Index", "Notification")</li>
                             }
                             <li>@Html.ActionLink("About", "About", "Home")</li>
                             <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
