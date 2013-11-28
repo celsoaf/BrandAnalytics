@@ -67,6 +67,21 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Activities\TwitterSpyActivity.cs" />
+    <Compile Include="Models\ReportModel.cs" />
+    <Compile Include="Service References\TwitterSpy\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <None Include="Service References\TwitterSpy\TwitterSpyService.disco" />
+    <None Include="Service References\TwitterSpy\configuration91.svcinfo" />
+    <None Include="Service References\TwitterSpy\configuration.svcinfo" />
+    <None Include="Service References\TwitterSpy\Reference.svcmap">
+      <Generator>Xaml Activity Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\TwitterSpy\endpointConfigurationNameResolver.svcinfo" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -79,10 +94,15 @@
     <Compile Include="Contracts\IBrandAnalyticsClientService.cs" />
     <Compile Include="Contracts\IBrandAnalyticsInternalService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Service References\TwitterSpy\TwitterSpyService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TwitterSpy\TwitterSpyService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BrandAnalytics.Data\BrandAnalytics.Data.csproj">
@@ -122,6 +142,28 @@
     <Content Include="BrandAnalyticsService.xamlx">
       <SubType>Designer</SubType>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\TwitterSpy\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\TwitterSpy\TwitterSpyService.wsdl" />
+    <None Include="Service References\TwitterSpy\TwitterSpyService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TwitterSpy\TwitterSpyService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <XamlAppDef Include="Service References\TwitterSpy\BrandAnalytics.TwitterSpy.ITwitterSpyService.SpyTopics.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+      <SubType>Designer</SubType>
+    </XamlAppDef>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

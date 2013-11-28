@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ca3613e1-3c47-48e2-8cf3-aa37b83a205f" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:1430/TwitterSpyService.xamlx" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="TwitterSpyService.xsd" MetadataType="Schema" ID="98964d45-b5ca-4817-807f-6471c9ffad15" SourceId="1" SourceUrl="http://localhost:1430/TwitterSpyService.xamlx?xsd=xsd3" />
+    <MetadataFile FileName="TwitterSpyService1.xsd" MetadataType="Schema" ID="84359748-4649-4231-adf5-653d8d1355c2" SourceId="1" SourceUrl="http://localhost:1430/TwitterSpyService.xamlx?xsd=xsd2" />
+    <MetadataFile FileName="TwitterSpyService.wsdl" MetadataType="Wsdl" ID="24fa78d6-6e22-41b4-82dc-21a114a7953c" SourceId="1" SourceUrl="http://localhost:1430/TwitterSpyService.xamlx?wsdl" />
+    <MetadataFile FileName="TwitterSpyService.disco" MetadataType="Disco" ID="db356168-231a-4f4a-bca2-3f0d9f4ef90e" SourceId="1" SourceUrl="http://localhost:1430/TwitterSpyService.xamlx?disco" />
+    <MetadataFile FileName="TwitterSpyService2.xsd" MetadataType="Schema" ID="93df48eb-3d04-4b68-9ca3-7aa7f86e042b" SourceId="1" SourceUrl="http://localhost:1430/TwitterSpyService.xamlx?xsd=xsd1" />
+    <MetadataFile FileName="TwitterSpyService3.xsd" MetadataType="Schema" ID="a38e3773-f245-4dbb-8165-05cff4b2cdf8" SourceId="1" SourceUrl="http://localhost:1430/TwitterSpyService.xamlx?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

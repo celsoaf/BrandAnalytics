@@ -1,9 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrandAnalytics", "BrandAnalytics\BrandAnalytics.csproj", "{97A0DC6F-CAF2-4E5D-8AA2-D9A4EB3B4B4B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1B33828C-B7AB-449E-8ED4-C5B146232FCB} = {1B33828C-B7AB-449E-8ED4-C5B146232FCB}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TwitterSpy", "TwitterSpy\TwitterSpy.csproj", "{1B33828C-B7AB-449E-8ED4-C5B146232FCB}"
 EndProject
