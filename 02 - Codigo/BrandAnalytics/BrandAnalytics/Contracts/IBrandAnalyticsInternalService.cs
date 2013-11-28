@@ -10,8 +10,13 @@ namespace BrandAnalytics.Contracts
     [ServiceContract]
     public interface IBrandAnalyticsInternalService
     {
-        void SpyTopics(int token, string[] topics, TimeSpan duration);
-        void RepeatSpyTopics(int token, string[] topics, TimeSpan duration);
+        [OperationContract]
+        void SpyTopics(string userName, int token, string[] topics, TimeSpan duration);
+
+        [OperationContract]
+        void RepeatSpyTopics(string userName, int token, string[] topics, TimeSpan duration);
+
+        [OperationContract]
         void Finalize(int token);
     }
 }
