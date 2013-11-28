@@ -28,6 +28,9 @@ namespace BrandAnalytics.Activities
 
                     study.Report.Authors = report.Authors;
                     study.Report.Tweets = report.Tweets;
+
+                    if (study.Report.Terms == null)
+                        study.Report.Terms = new List<StudyTermReport>();
                     foreach (var item in report.Terms)
                     {
                         study.Report.Terms.Add(new StudyTermReport()

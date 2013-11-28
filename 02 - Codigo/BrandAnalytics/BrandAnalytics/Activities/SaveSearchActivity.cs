@@ -23,12 +23,16 @@ namespace BrandAnalytics.Activities
                 var study = ctx.Studies.FirstOrDefault(s => s.Id == id);
                 if (study != null)
                 {
-                    study.EmployeeUserName = UserName.Get(context);
+                    var userName = UserName.Get(context);
+                    //study.EmployeeUserName = userName;
+                    study.Employee = ctx.Clients.FirstOrDefault(c => c.UserName == userName);
 
                     study.Duration = Duration.Get(context);
 
-                    foreach (var item in Topics.Get(context))
+                    var topics = Topics.Get(context);
+                    foreach (var item in topics)
                         study.Topics.Add(new StudyTopic() { Name = item });
+                        
 
                     study.State = Data.Enums.StudyState.Collecting;
 
