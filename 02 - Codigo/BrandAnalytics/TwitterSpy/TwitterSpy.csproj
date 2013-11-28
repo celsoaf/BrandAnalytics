@@ -43,6 +43,9 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.0.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="LinqToTwitter">
+      <HintPath>..\packages\LinqToTwitter.2.1.11\lib\net45\LinqToTwitter.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -67,6 +70,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Activities\TwitterStopActivity.cs" />
+    <Compile Include="Activities\TwitterStartActivity.cs" />
+    <Compile Include="Models\TermModel.cs" />
+    <Compile Include="Models\TopicModel.cs" />
+    <Compile Include="Services\ITwitterService.cs" />
+    <Compile Include="Services\TwitterService.cs" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -76,17 +85,10 @@
     </Content>
     <Compile Include="ITwitterSpyService.cs" />
     <Compile Include="Models\ReportModel.cs" />
-    <Compile Include="Models\ReportTermModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="TwitterSpyService.xamlx">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Service Contracts\ITwitterSpyService\contractTypeName" />
@@ -99,6 +101,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TwitterSpyService.xamlx">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
