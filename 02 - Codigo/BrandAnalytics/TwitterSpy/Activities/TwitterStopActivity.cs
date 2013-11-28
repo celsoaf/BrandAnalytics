@@ -10,39 +10,16 @@ namespace TwitterSpy.Activities
 {
     public class TwitterStopActivity : CodeActivity
     {
-        public InArgument<ITwitterService[]> Instances { get; set; }
-        public OutArgument<ReportModel> Report { get; set; }
+        public InArgument<ITwitterService> Instance { get; set; }
+        public OutArgument<TopicModel> Topic { get; set; }
 
         protected override void Execute(CodeActivityContext context)
         {
-            var instances = Instances.Get(context);
+            var instance = Instance.Get(context);
 
-            var results = new List<TopicModel>();
+            var topic = instance.StopStreaming();
 
-            foreach (var item in instances)
-            {
-                results.Add(item.StopStreaming());
-            }
-
-            var report = new ReportModel()
-            {
-                Topics = results.Select(t => t.Topic).ToList(),
-                Authors = results.Sum(t => t.Authors.Count),
-                Tweets = results.Sum(t => t.Tweets)
-            };
-
-            report.Terms = results.SelectMany(t => t.Terms)
-                                    .GroupBy(t => t.Term)
-                                    .Select(t => new ReportTermModel()
-                                    {
-                                        Term = t.Key,
-                                        Count = t.Sum(t1 => t1.Count)
-                                    })
-                                    .OrderByDescending(t => t.Count)
-                                    .Take(10)
-                                    .ToList();
-
-            Report.Set(context, report);
+            Topic.Set(context, topic);
         }
     }
 }

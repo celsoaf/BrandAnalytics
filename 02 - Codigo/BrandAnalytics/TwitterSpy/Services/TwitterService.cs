@@ -26,6 +26,7 @@ namespace TwitterSpy.Services
             return auth;
         }
 
+        private TwitterContext twitterCtx;
         private Streaming currentStreaming;
         private TopicModel model;
 
@@ -35,10 +36,10 @@ namespace TwitterSpy.Services
 
             var auth = GetSingleUserAuth();
             auth.Authorize();
-            var twitterCtx = new TwitterContext(auth);
+            twitterCtx = new TwitterContext(auth);
 
             currentStreaming = twitterCtx.Streaming.Where(s => s.Type == StreamingType.Filter &&
-                    s.Track == topic)
+                    s.Track == topic /* && s.Language == "pt" */)
                 .StreamingCallback(sc =>
                 {
                     if (!string.IsNullOrEmpty(sc.Content))
@@ -47,31 +48,43 @@ namespace TwitterSpy.Services
                 .SingleOrDefault();
         }
 
+        private object locker = new object();
         private void Process(StreamContent sc)
         {
+            if (sc.Error != null)
+                return;
+
             var json = JsonMapper.ToObject(sc.Content);
 
             var status = new Status(json);
 
-            model.Tweets++;
-
-            if (!model.Authors.Contains(status.User.ID))
-                model.Authors.Add(status.User.ID);
-
-            var terms = status.Text.Split(' ', '\n', '\r', '.', ',');
-            foreach (var item in terms)
+            if (!string.IsNullOrEmpty(status.Text))
             {
-                var term = model.Terms.FirstOrDefault(t => t.Term == item);
-                if (term == null)
-                    model.Terms.Add(new TermModel { Term = item, Count = 1 });
-                else
-                    term.Count++;
+                lock (locker)
+                {
+                    model.Tweets++;
+
+                    if (!model.Authors.Contains(status.User.Name))
+                        model.Authors.Add(status.User.Name);
+
+                    var terms = status.Text.Split(' ', '\n', '\r', '.', ',');
+                    foreach (var item in terms)
+                    {
+                        var term = model.Terms.FirstOrDefault(t => t.Term == item);
+                        if (term == null)
+                            model.Terms.Add(new TermModel { Term = item, Count = 1 });
+                        else
+                            term.Count++;
+                    }
+                }
             }
         }
 
         public TopicModel StopStreaming()
         {
-            currentStreaming.CloseStream();
+            if (currentStreaming != null)
+                currentStreaming.CloseStream();
+            twitterCtx.Dispose();
 
             return model;
         }

@@ -70,6 +70,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Activities\TwitterReportActivity.cs" />
     <Compile Include="Activities\TwitterStopActivity.cs" />
     <Compile Include="Activities\TwitterStartActivity.cs" />
     <Compile Include="Models\ReportTermModel.cs" />

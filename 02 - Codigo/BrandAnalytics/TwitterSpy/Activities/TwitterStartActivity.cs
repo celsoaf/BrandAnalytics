@@ -9,25 +9,18 @@ namespace TwitterSpy.Activities
 {
     public class TwitterStartActivity : CodeActivity
     {
-        public InArgument<string[]> Topics { get; set; }
-        public OutArgument<ITwitterService[]> Instances { get; set; }
+        public InArgument<string> Topic { get; set; }
+        public OutArgument<ITwitterService> Instance { get; set; }
 
         protected override void Execute(CodeActivityContext context)
         {
-            var topics = Topics.Get(context);
+            var topic = Topic.Get(context);
 
-            var list = new List<ITwitterService>();
+            var service = new TwitterService();
 
-            foreach (var item in topics)
-            {
-                var service = new TwitterService();
+            service.StartStreaming(topic);
 
-                service.StartStreaming(item);
-
-                list.Add(service);
-            }
-
-            Instances.Set(context, list.ToArray());
+            Instance.Set(context, service);
         }
     }
 }

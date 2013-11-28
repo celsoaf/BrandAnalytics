@@ -61,12 +61,17 @@
     <p1:Sequence.Variables>
       <p1:Variable x:TypeArguments="s:String[]" Name="topics" />
       <p1:Variable x:TypeArguments="x:TimeSpan" Name="duration" />
-      <p1:Variable x:TypeArguments="ts:ITwitterService[]" Name="serviceInstances" />
       <p1:Variable x:TypeArguments="tm:ReportModel" Name="report" />
+      <p1:Variable x:TypeArguments="scg:List(tm:TopicModel)" Name="topicModels">
+        <p1:Variable.Default>
+          <mca:CSharpValue x:TypeArguments="scg:List(tm:TopicModel)">new List&lt;TopicModel&gt;()</mca:CSharpValue>
+        </p1:Variable.Default>
+      </p1:Variable>
     </p1:Sequence.Variables>
     <p1:Sequence DisplayName="SpyTopics_ReceiveAndSendReply" sap2010:WorkflowViewState.IdRef="Sequence_3">
       <p1:Sequence.Variables>
         <x:Reference>__ReferenceID1</x:Reference>
+        <p1:Variable x:TypeArguments="ts:ITwitterService" Name="service" />
       </p1:Sequence.Variables>
       <Receive x:Name="__ReferenceID0" Action="http://tempuri.org/ITwitterSpyService/SpyTopics" CanCreateInstance="True" DisplayName="SpyTopics_Receive" sap2010:WorkflowViewState.IdRef="Receive_2" OperationName="SpyTopics" ProtectionLevel="None" ServiceContractName="p:ITwitterSpyService">
         <Receive.CorrelationInitializers>
@@ -91,35 +96,75 @@
           </p1:OutArgument>
         </ReceiveParametersContent>
       </Receive>
-      <ta:TwitterStartActivity sap2010:WorkflowViewState.IdRef="TwitterStartActivity_1">
-        <ta:TwitterStartActivity.Instances>
-          <p1:OutArgument x:TypeArguments="ts:ITwitterService[]">
-            <mca:CSharpReference x:TypeArguments="ts:ITwitterService[]">serviceInstances</mca:CSharpReference>
-          </p1:OutArgument>
-        </ta:TwitterStartActivity.Instances>
-        <ta:TwitterStartActivity.Topics>
-          <p1:InArgument x:TypeArguments="s:String[]">
-            <mca:CSharpValue x:TypeArguments="s:String[]">topics</mca:CSharpValue>
+      <p1:ForEach x:TypeArguments="x:String" DisplayName="ForEach&lt;String&gt;" sap2010:WorkflowViewState.IdRef="ForEach`1_1">
+        <p1:ForEach.Values>
+          <p1:InArgument x:TypeArguments="scg:IEnumerable(x:String)">
+            <mca:CSharpValue x:TypeArguments="scg:IEnumerable(x:String)">topics</mca:CSharpValue>
           </p1:InArgument>
-        </ta:TwitterStartActivity.Topics>
-      </ta:TwitterStartActivity>
-      <p1:Delay sap2010:WorkflowViewState.IdRef="Delay_1">
-        <p1:InArgument x:TypeArguments="x:TimeSpan">
-          <mca:CSharpValue x:TypeArguments="x:TimeSpan">duration</mca:CSharpValue>
-        </p1:InArgument>
-      </p1:Delay>
-      <ta:TwitterStopActivity sap2010:WorkflowViewState.IdRef="TwitterStopActivity_1">
-        <ta:TwitterStopActivity.Instances>
-          <p1:InArgument x:TypeArguments="ts:ITwitterService[]">
-            <mca:CSharpValue x:TypeArguments="ts:ITwitterService[]">serviceInstances</mca:CSharpValue>
-          </p1:InArgument>
-        </ta:TwitterStopActivity.Instances>
-        <ta:TwitterStopActivity.Report>
+        </p1:ForEach.Values>
+        <p1:ActivityAction x:TypeArguments="x:String">
+          <p1:ActivityAction.Argument>
+            <p1:DelegateInArgument x:TypeArguments="x:String" Name="item" />
+          </p1:ActivityAction.Argument>
+          <p1:Sequence sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <p1:Sequence.Variables>
+              <p1:Variable x:TypeArguments="tm:TopicModel" Name="topicModel" />
+            </p1:Sequence.Variables>
+            <ta:TwitterStartActivity sap2010:WorkflowViewState.IdRef="TwitterStartActivity_1">
+              <ta:TwitterStartActivity.Instance>
+                <p1:OutArgument x:TypeArguments="ts:ITwitterService">
+                  <mca:CSharpReference x:TypeArguments="ts:ITwitterService">service</mca:CSharpReference>
+                </p1:OutArgument>
+              </ta:TwitterStartActivity.Instance>
+              <ta:TwitterStartActivity.Topic>
+                <p1:InArgument x:TypeArguments="x:String">
+                  <mca:CSharpValue x:TypeArguments="x:String">item</mca:CSharpValue>
+                </p1:InArgument>
+              </ta:TwitterStartActivity.Topic>
+            </ta:TwitterStartActivity>
+            <p1:Delay sap2010:WorkflowViewState.IdRef="Delay_1">
+              <p1:InArgument x:TypeArguments="x:TimeSpan">
+                <mca:CSharpValue x:TypeArguments="x:TimeSpan">duration</mca:CSharpValue>
+              </p1:InArgument>
+            </p1:Delay>
+            <ta:TwitterStopActivity sap2010:WorkflowViewState.IdRef="TwitterStopActivity_1">
+              <ta:TwitterStopActivity.Instance>
+                <p1:InArgument x:TypeArguments="ts:ITwitterService">
+                  <mca:CSharpValue x:TypeArguments="ts:ITwitterService">service</mca:CSharpValue>
+                </p1:InArgument>
+              </ta:TwitterStopActivity.Instance>
+              <ta:TwitterStopActivity.Topic>
+                <p1:OutArgument x:TypeArguments="tm:TopicModel">
+                  <mca:CSharpReference x:TypeArguments="tm:TopicModel">topicModel</mca:CSharpReference>
+                </p1:OutArgument>
+              </ta:TwitterStopActivity.Topic>
+            </ta:TwitterStopActivity>
+            <p1:AddToCollection x:TypeArguments="tm:TopicModel" DisplayName="AddToCollection&lt;TopicModel&gt;" sap2010:WorkflowViewState.IdRef="AddToCollection`1_1">
+              <p1:AddToCollection.Item>
+                <p1:InArgument x:TypeArguments="tm:TopicModel">
+                  <mca:CSharpValue x:TypeArguments="tm:TopicModel">topicModel</mca:CSharpValue>
+                </p1:InArgument>
+              </p1:AddToCollection.Item>
+              <p1:InArgument x:TypeArguments="scg:ICollection(tm:TopicModel)">
+                <mca:CSharpValue x:TypeArguments="scg:ICollection(tm:TopicModel)">topicModels</mca:CSharpValue>
+              </p1:InArgument>
+            </p1:AddToCollection>
+          </p1:Sequence>
+        </p1:ActivityAction>
+      </p1:ForEach>
+      <ta:TwitterReportActivity>
+        <ta:TwitterReportActivity.Report>
           <p1:OutArgument x:TypeArguments="tm:ReportModel">
             <mca:CSharpReference x:TypeArguments="tm:ReportModel">report</mca:CSharpReference>
           </p1:OutArgument>
-        </ta:TwitterStopActivity.Report>
-      </ta:TwitterStopActivity>
+        </ta:TwitterReportActivity.Report>
+        <ta:TwitterReportActivity.TopicModels>
+          <p1:InArgument x:TypeArguments="scg:List(tm:TopicModel)">
+            <mca:CSharpValue x:TypeArguments="scg:List(tm:TopicModel)">topicModels</mca:CSharpValue>
+          </p1:InArgument>
+        </ta:TwitterReportActivity.TopicModels>
+        <sap2010:WorkflowViewState.IdRef>TwitterReportActivity_1</sap2010:WorkflowViewState.IdRef>
+      </ta:TwitterReportActivity>
       <SendReply Request="{x:Reference __ReferenceID0}" Action="http://tempuri.org/ITwitterSpyService/SpyTopicsResponse" DisplayName="SpyTopics_SendReply" sap2010:WorkflowViewState.IdRef="SendReply_2">
         <SendParametersContent>
           <p1:InArgument x:TypeArguments="tm:ReportModel" x:Key="SpyTopicsResult">
@@ -128,16 +173,26 @@
         </SendParametersContent>
       </SendReply>
     </p1:Sequence>
-    <sads:DebugSymbol.Symbol>d15DOlxHaXQtSVNFTFxDT1NcVHJhYmFsaG8gUHJhdGljb1wwMiAtIENvZGlnb1xCcmFuZEFuYWx5dGljc1xUd2l0dGVyU3B5XFR3aXR0ZXJTcHlTZXJ2aWNlLnhhbWx4EBIDhAERAQFDBYIBEwECRwddEQEtXgdpIQEgagduEgEZbwd6IAEMeweBARMBA1cNV1sBNUwRUCQBNFoNWl0BLmYNZlMBJ2ENYW8BIWwLbFMBGnINcmcBE3cNd18BDX4NflcBBA==</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d15DOlxHaXQtSVNFTFxDT1NcVHJhYmFsaG8gUHJhdGljb1wwMiAtIENvZGlnb1xCcmFuZEFuYWx5dGljc1xUd2l0dGVyU3B5XFR3aXR0ZXJTcHlTZXJ2aWNlLnhhbWx4GhIDsQERAQFDC0N0AQJHBa8BEwEHTAdiEQFtYweaARQBIZsBB6cBIgESqAEHrgETAQhcDVxbAXZREVUkAXVfDV9dAW5mDWZiAWZtC5gBGQEiowENowFlARqeAQ2eAV8BE6sBDasBVwEJcQ18JwFTfQ2BARgBSYIBDY0BJgE2jgENlwEiASN0E3RqAV15E3lVAVR/EX9ZAUqFAROFAWIBQIoBE4oBaAE3lQERlQFwAS2RARORAWABJA==</sads:DebugSymbol.Symbol>
   </p1:Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
-      <sap2010:ViewStateData Id="Receive_2" sap:VirtualizedContainerService.HintSize="255,86" />
-      <sap2010:ViewStateData Id="TwitterStartActivity_1" sap:VirtualizedContainerService.HintSize="255,22" />
-      <sap2010:ViewStateData Id="Delay_1" sap:VirtualizedContainerService.HintSize="255,22" />
-      <sap2010:ViewStateData Id="TwitterStopActivity_1" sap:VirtualizedContainerService.HintSize="255,22" />
-      <sap2010:ViewStateData Id="SendReply_2" sap:VirtualizedContainerService.HintSize="255,86" />
-      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="277,522">
+      <sap2010:ViewStateData Id="Receive_2" sap:VirtualizedContainerService.HintSize="287,86" />
+      <sap2010:ViewStateData Id="TwitterStartActivity_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Delay_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="TwitterStopActivity_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="AddToCollection`1_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="222,332">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEach`1_1" sap:VirtualizedContainerService.HintSize="287,482" />
+      <sap2010:ViewStateData Id="TwitterReportActivity_1" sap:VirtualizedContainerService.HintSize="287,22" />
+      <sap2010:ViewStateData Id="SendReply_2" sap:VirtualizedContainerService.HintSize="287,86" />
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="309,920">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Type Type="t:ITwitterSpyService" x:Key="contractType" />
@@ -145,14 +200,14 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="299,646">
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="331,858">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="WorkflowService_1" sap:VirtualizedContainerService.HintSize="329,716" />
+      <sap2010:ViewStateData Id="WorkflowService_1" sap:VirtualizedContainerService.HintSize="361,928" />
     </sap2010:ViewStateManager>
   </sap2010:WorkflowViewState.ViewStateManager>
 </WorkflowService>
