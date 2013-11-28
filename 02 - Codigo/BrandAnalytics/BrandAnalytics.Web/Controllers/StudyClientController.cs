@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BrandAnalytics.Web.Utils;
 
 namespace BrandAnalytics.Web.Controllers
 {
@@ -17,13 +18,13 @@ namespace BrandAnalytics.Web.Controllers
         public ActionResult Index()
         {
             var userName = User.Identity.Name;
-            IList<StudyClientModel> list = null;
+            IList<StudyModel> list = null;
             using (var ctx = new BrandAnalyticsDB())
             {
                 var user = ctx.Clients.FirstOrDefault(c => c.UserName == userName);
                 if (user != null)
                 {
-                    list = user.Studies.Select(TranslateStudie)
+                    list = user.Studies.Select(StudyUtils.TranslateStudie)
                     .ToList();
                 }
             }
@@ -44,7 +45,7 @@ namespace BrandAnalytics.Web.Controllers
 
         public ActionResult Create()
         {
-            var model = new StudyClientModel();
+            var model = new StudyModel();
 
             return View(model);
         }
@@ -53,7 +54,7 @@ namespace BrandAnalytics.Web.Controllers
         // POST: /Study/Create
 
         [HttpPost]
-        public ActionResult Create(StudyClientModel model)
+        public ActionResult Create(StudyModel model)
         {
             try
             {
@@ -83,7 +84,7 @@ namespace BrandAnalytics.Web.Controllers
             {
                 var model = ctx.Studies
                     .Where(s => s.Id == id)
-                    .Select(TranslateStudie)
+                    .Select(StudyUtils.TranslateStudie)
                     .FirstOrDefault();
 
                 return View(model);
@@ -120,7 +121,7 @@ namespace BrandAnalytics.Web.Controllers
             {
                 var model = ctx.Studies
                     .Where(s => s.Id == id)
-                    .Select(TranslateStudie)
+                    .Select(StudyUtils.TranslateStudie)
                     .FirstOrDefault();
 
                 return View(model);
@@ -159,29 +160,6 @@ namespace BrandAnalytics.Web.Controllers
             catch
             {
                 return View();
-            }
-        }
-
-        public StudyClientModel TranslateStudie(Study study)
-        {
-            using (var service = new BrandAnaliticsClient.BrandAnalyticsClientServiceClient())
-            {
-                var res = new StudyClientModel()
-                {
-                    Id = study.Id,
-                    Mark = study.Mark,
-                    Duration = study.Duration,
-                    State = study.State.ToString()
-                };
-
-                try
-                {
-                    res.State = service.GetState(study.Id);
-                    res.Running = true;
-                }
-                catch { res.Running = false; }
-
-                return res;
             }
         }
     }

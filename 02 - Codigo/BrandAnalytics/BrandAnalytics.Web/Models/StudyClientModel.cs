@@ -7,7 +7,7 @@ using System.Web;
 
 namespace BrandAnalytics.Web.Models
 {
-    public class StudyClientModel
+    public class StudyModel
     {
         public int Id { get; set; }
 
