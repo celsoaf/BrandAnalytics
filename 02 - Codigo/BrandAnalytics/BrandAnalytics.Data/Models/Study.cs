@@ -18,9 +18,9 @@ namespace BrandAnalytics.Data.Models
 
         public StudyState State { get; set; }
 
-        public DateTime? Start { get; set; }
+        public TimeSpan? Duration { get; set; }
 
-        public DateTime? End { get; set; }
+        public IList<StudyTopic> Topics { get; set; }
 
         [ForeignKey("Id")]
         public virtual StudyReport Report { get; set; }

@@ -8,17 +8,16 @@ using System.Threading.Tasks;
 
 namespace BrandAnalytics.Data.Models
 {
-    public class StudyTermReport
+    public class StudyTopic
     {
         [Key, Column(Order = 0)]
         public int Id { get; set; }
         [Key, Column(Order = 1)]
         public int StudyId { get; set; }
 
-        public string Term { get; set; }
-        public int Count { get; set; }
+        public string Name { get; set; }
 
         [ForeignKey("StudyId")]
-        public virtual StudyReport Report { get; set; }
+        public virtual Study Study { get; set; }
     }
 }
