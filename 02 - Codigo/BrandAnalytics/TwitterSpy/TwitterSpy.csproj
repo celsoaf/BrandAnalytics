@@ -72,6 +72,7 @@
   <ItemGroup>
     <Compile Include="Activities\TwitterStopActivity.cs" />
     <Compile Include="Activities\TwitterStartActivity.cs" />
+    <Compile Include="Models\ReportTermModel.cs" />
     <Compile Include="Models\TermModel.cs" />
     <Compile Include="Models\TopicModel.cs" />
     <Compile Include="Services\ITwitterService.cs" />

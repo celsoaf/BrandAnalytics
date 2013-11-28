@@ -28,14 +28,18 @@ namespace TwitterSpy.Activities
             {
                 Topics = results.Select(t => t.Topic).ToList(),
                 Authors = results.Sum(t => t.Authors.Count),
-                Tweets = results.Sum(t=>t.Tweets)
+                Tweets = results.Sum(t => t.Tweets)
             };
 
             report.Terms = results.SelectMany(t => t.Terms)
                                     .GroupBy(t => t.Term)
-                                    .OrderBy(t => t.Sum(t1 => t1.Count))
+                                    .Select(t => new ReportTermModel()
+                                    {
+                                        Term = t.Key,
+                                        Count = t.Sum(t1 => t1.Count)
+                                    })
+                                    .OrderByDescending(t => t.Count)
                                     .Take(10)
-                                    .Select(t => t.Key)
                                     .ToList();
 
             Report.Set(context, report);

@@ -16,6 +16,6 @@ namespace TwitterSpy.Models
         [DataMember]
         public int Authors { get; set; }
         [DataMember]
-        public IList<string> Terms { get; set; }
+        public IList<ReportTermModel> Terms { get; set; }
     }
 }
