@@ -67,7 +67,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Activities\NotifyStateActivity.cs" />
+    <Compile Include="Activities\NotifyEmployeeActivity.cs" />
+    <Compile Include="Activities\NotifyClientActivity.cs" />
     <Compile Include="Activities\SaveReportActivity.cs" />
     <Compile Include="Activities\SaveSearchActivity.cs" />
     <Compile Include="Service References\TwitterSpyService\Reference.cs">

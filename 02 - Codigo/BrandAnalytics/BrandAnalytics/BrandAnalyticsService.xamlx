@@ -339,13 +339,13 @@
                                   </p1:InArgument>
                                 </p1:Assign.Value>
                               </p1:Assign>
-                              <ba:NotifyStateActivity sap2010:WorkflowViewState.IdRef="NotifyStateActivity_1">
-                                <ba:NotifyStateActivity.StudyId>
+                              <ba:NotifyClientActivity sap2010:WorkflowViewState.IdRef="NotifyClientActivity_1">
+                                <ba:NotifyClientActivity.StudyId>
                                   <p1:InArgument x:TypeArguments="x:Int32">
                                     <mca:CSharpValue x:TypeArguments="x:Int32">studyid</mca:CSharpValue>
                                   </p1:InArgument>
-                                </ba:NotifyStateActivity.StudyId>
-                              </ba:NotifyStateActivity>
+                                </ba:NotifyClientActivity.StudyId>
+                              </ba:NotifyClientActivity>
                             </p1:Sequence>
                           </p1:State.Entry>
                           <p1:State.Transitions>
@@ -399,13 +399,13 @@
                                           </p1:InArgument>
                                         </p1:Assign.Value>
                                       </p1:Assign>
-                                      <ba:NotifyStateActivity sap2010:WorkflowViewState.IdRef="NotifyStateActivity_2">
-                                        <ba:NotifyStateActivity.StudyId>
+                                      <ba:NotifyEmployeeActivity sap2010:WorkflowViewState.IdRef="NotifyEmployeeActivity_1">
+                                        <ba:NotifyEmployeeActivity.StudyId>
                                           <p1:InArgument x:TypeArguments="x:Int32">
                                             <mca:CSharpValue x:TypeArguments="x:Int32">studyid</mca:CSharpValue>
                                           </p1:InArgument>
-                                        </ba:NotifyStateActivity.StudyId>
-                                      </ba:NotifyStateActivity>
+                                        </ba:NotifyEmployeeActivity.StudyId>
+                                      </ba:NotifyEmployeeActivity>
                                     </p1:Sequence>
                                   </p1:State.Entry>
                                   <p1:State.Transitions>
@@ -523,6 +523,18 @@
                                               <p1:OutArgument x:TypeArguments="x:Int32" x:Key="token" />
                                             </ReceiveParametersContent>
                                           </Receive>
+                                          <ba:SetStateStudyActivity sap2010:WorkflowViewState.IdRef="SetStateStudyActivity_2">
+                                            <ba:SetStateStudyActivity.State>
+                                              <p1:InArgument x:TypeArguments="bde:StudyState">
+                                                <mca:CSharpValue x:TypeArguments="bde:StudyState">StudyState.Finished</mca:CSharpValue>
+                                              </p1:InArgument>
+                                            </ba:SetStateStudyActivity.State>
+                                            <ba:SetStateStudyActivity.StudyId>
+                                              <p1:InArgument x:TypeArguments="x:Int32">
+                                                <mca:CSharpValue x:TypeArguments="x:Int32">studyid</mca:CSharpValue>
+                                              </p1:InArgument>
+                                            </ba:SetStateStudyActivity.StudyId>
+                                          </ba:SetStateStudyActivity>
                                           <SendReply Request="{x:Reference __ReferenceID9}" Action="http://tempuri.org/IBrandAnalyticsInternalService/FinalizeResponse" DisplayName="Finalize_SendReply" sap2010:WorkflowViewState.IdRef="SendReply_9">
                                             <SendParametersContent />
                                           </SendReply>
@@ -531,8 +543,8 @@
                                       <p1:Transition.To>
                                         <p1:State x:Name="__ReferenceID14" DisplayName="Finished" sap2010:WorkflowViewState.IdRef="State_6" IsFinal="True">
                                           <p1:State.Entry>
-                                            <p1:Sequence>
-                                              <p1:Assign>
+                                            <p1:Sequence sap2010:WorkflowViewState.IdRef="Sequence_14">
+                                              <p1:Assign sap2010:WorkflowViewState.IdRef="Assign_10">
                                                 <p1:Assign.To>
                                                   <p1:OutArgument x:TypeArguments="bde:StudyState">
                                                     <mca:CSharpReference x:TypeArguments="bde:StudyState">state</mca:CSharpReference>
@@ -543,17 +555,15 @@
                                                     <mca:CSharpValue x:TypeArguments="bde:StudyState">StudyState.Finished</mca:CSharpValue>
                                                   </p1:InArgument>
                                                 </p1:Assign.Value>
-                                                <sap2010:WorkflowViewState.IdRef>Assign_10</sap2010:WorkflowViewState.IdRef>
                                               </p1:Assign>
-                                              <ba:NotifyStateActivity>
-                                                <ba:NotifyStateActivity.StudyId>
+                                              <ba:NotifyClientActivity>
+                                                <ba:NotifyClientActivity.StudyId>
                                                   <p1:InArgument x:TypeArguments="x:Int32">
                                                     <mca:CSharpValue x:TypeArguments="x:Int32">studyid</mca:CSharpValue>
                                                   </p1:InArgument>
-                                                </ba:NotifyStateActivity.StudyId>
-                                                <sap2010:WorkflowViewState.IdRef>NotifyStateActivity_3</sap2010:WorkflowViewState.IdRef>
-                                              </ba:NotifyStateActivity>
-                                              <sap2010:WorkflowViewState.IdRef>Sequence_14</sap2010:WorkflowViewState.IdRef>
+                                                </ba:NotifyClientActivity.StudyId>
+                                                <sap2010:WorkflowViewState.IdRef>NotifyClientActivity_2</sap2010:WorkflowViewState.IdRef>
+                                              </ba:NotifyClientActivity>
                                             </p1:Sequence>
                                           </p1:State.Entry>
                                         </p1:State>
@@ -631,7 +641,7 @@ state==StudyState.Initial</mca:CSharpValue>
         </p1:Sequence>
       </p1:DoWhile>
     </p1:Parallel>
-    <sads:DebugSymbol.Symbol>d2ZDOlxHaXQtSVNFTFxDT1NcVHJhYmFsaG8gUHJhdGljb1wwMiAtIENvZGlnb1xCcmFuZEFuYWx5dGljc1xCcmFuZEFuYWx5dGljc1xCcmFuZEFuYWx5dGljc1NlcnZpY2UueGFtbHhqGAP7BBEBAUoLSmEBAlAF+QQTAQhRB8oEGQE2ywQH+AQUAQlSCb8EFALUA6QBEbsEHALDAusBGfoBJAKuAscCGbcEJALeAYMDIbMELAFXlAQprwQ0ATfNBAvPBCwBMNEECfcEFwEKVA1fGQKuBGQRoQEfAtYDpgEVsQEhAsEDtgEZ6AEnApwD/wEZxAInAsUC7QEd+AEpArACyQId3QIrApAC4gIhgAMvAuABhQMlmQMzAsABngMp4wM3AWnrAymRBDcBWZYELa0EOwE51QQL7wQVASHwBAv2BBcBC1wTXGkCuARXE1dkAq8EaBN+HQKYBH8TjwEtAvkDkAETmQErAuQDmgEToAEfAtcDrgEbrgFxAssDqQEbqQFsAsIDugEb2AElArUD2QEb5AE2AqAD5QEb5wEnAp0DgwIbqgIlAvICqwIbwAIzAskCwQIbwwInAsYC9QEj9QF6AroC8AEj8AF0ArECygIf1QIrApsC1gIf3AI4ApEC4wIj8wIzAvQB9AIj/wI7AuEBhgMnkQMzAssBkgMnmANAAsEBogMryQM1ApYBygMr3wNDAW3gAyviAzcBau8DK40ENQFdjgQrkAQ3AVqXBC+jBDsBRKQEL6sESAE64AQR4AReASnnBBXnBGIBIvMEEfMEXwEMeBl4ZwKkBG0dcTACowR7GXtjApkEjAEZjAFfAo4EggEZggFjAoQEhwEZhwFlAvoDkwEZkwFmAu8DlwEXlwFnAuUDnQEZnQFdAtgDxQEhxQFuArcDzAEl0AE4ArYD4QEh4QFlAqsD3AEh3AF4AqEDjgIhjgJuApIDoAIhoAJvAogDpAIhpAJvAv4ClQIlmQI4Av0CpwIhpwJxAvMCuAIhuAJnAugCvQIhvQJnAt4CswIhswJlAtQCrgIhrgJpAsoC0gIl0gJ+AqUCzQIlzQJ2ApwC2QIl2QJpApIC8AIp8AJvAocC6wIp6wJxAv4B5gIp5gJ7AvUB9wIp9wJzAusB/AIp/AJtAuIBjgMtjgOFAQLVAYkDLYkDfgLMAZUDLZUDcQLCAa0DMa0DfgK2Ab8DMb8DfwKsAcMDMcMDfwKiAbQDNbgDSAKhAcYDMcYDgQEClwHXAzHXA3cCjAHcAzHcA3cCggHSAzHSA3UBeM0DMc0DeQFu+gMx+gN+AV+BBDWFBEgBXp8ENZ8EjAEBTpoENZoEhgEBRacENacEeQE7</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d2ZDOlxHaXQtSVNFTFxDT1NcVHJhYmFsaG8gUHJhdGljb1wwMiAtIENvZGlnb1xCcmFuZEFuYWx5dGljc1xCcmFuZEFuYWx5dGljc1xCcmFuZEFuYWx5dGljc1NlcnZpY2UueGFtbHhtGAOFBREBAUoLSmEBAlAFgwUTAQhRB9QEGQE21QQHggUUAQlSCckEFALpA6QBEcUEHALYAusBGfoBJALDAscCGcEEJALzAYMDIb0ELAFXoAQpuQQ0ATfXBAvZBCwBMNsECYEFFwEKVA1fGQLDBGQRoQEfAusDpgEVsQEhAtYDtgEZ6AEnArED/wEZxAInAtoC7QEd+AEpAsUCyQId3QIrAqUC4gIhgAMvAvUBhQMlmQMzAtUBngMp4wM3AX7rAymdBDcBWaIELbcEOwE53wQL+QQVASH6BAuABRcBC1wTXGkCzQRXE1dkAsQEaBN+HQKtBH8TjwEtAo4EkAETmQErAvkDmgEToAEfAuwDrgEbrgFxAuADqQEbqQFsAtcDugEb2AElAsoD2QEb5AE2ArUD5QEb5wEnArIDgwIbqgIlAocDqwIbwAIzAt4CwQIbwwInAtsC9QEj9QF6As8C8AEj8AF0AsYCygIf1QIrArAC1gIf3AI5AqYC4wIj8wIzAokC9AIj/wI7AvYBhgMnkQMzAuABkgMnmANDAtYBogMryQM1AqsBygMr3wNDAoIB4AMr4gM3AX/vAyuNBDUBco4EK5kERgFdmgQrnAQ3AVqjBC+uBDsBRK8EL7YESQE66gQR6gReASnxBBXxBGIBIv0EEf0EXwEMeBl4ZwK5BG0dcTACuAR7GXtjAq4EjAEZjAFfAqMEggEZggFjApkEhwEZhwFlAo8EkwEZkwFmAoQElwEXlwFnAvoDnQEZnQFdAu0DxQEhxQFuAswDzAEl0AE4AssD4QEh4QFlAsAD3AEh3AF4ArYDjgIhjgJuAqcDoAIhoAJvAp0DpAIhpAJvApMDlQIlmQI4ApIDpwIhpwJxAogDuAIhuAJnAv0CvQIhvQJnAvMCswIhswJlAukCrgIhrgJpAt8C0gIl0gJ+AroCzQIlzQJ2ArEC2QIl2QJpAqcC8AIp8AJvApwC6wIp6wJxApMC5gIp5gJ7AooC9wIp9wJzAoAC/AIp/AJtAvcBjgMtjgOFAQLqAYkDLYkDfgLhAZUDLZUDcQLXAa0DMa0DfgLLAb8DMb8DfwLBAcMDMcMDfwK3AbQDNbgDSAK2AcYDMcYDgQECrAHXAzHXA3cCoQHcAzHcA3cClwHSAzHSA3UCjQHNAzHNA3kCgwH6AzH6A34BdIEENYUESAFzlgQxlgR1AWiRBDGRBIgBAV6rBDWrBIwBAU6mBDWmBIYBAUWyBDWyBHkBOw==</sads:DebugSymbol.Symbol>
   </p1:Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
@@ -691,7 +701,7 @@ state==StudyState.Initial</mca:CSharpValue>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="Assign_8" sap:VirtualizedContainerService.HintSize="242,62" />
-      <sap2010:ViewStateData Id="NotifyStateActivity_1" sap:VirtualizedContainerService.HintSize="242,22" />
+      <sap2010:ViewStateData Id="NotifyClientActivity_1" sap:VirtualizedContainerService.HintSize="242,22" />
       <sap2010:ViewStateData Id="Sequence_12" sap:VirtualizedContainerService.HintSize="264,248">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -709,7 +719,7 @@ state==StudyState.Initial</mca:CSharpValue>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="Assign_9" sap:VirtualizedContainerService.HintSize="242,62" />
-      <sap2010:ViewStateData Id="NotifyStateActivity_2" sap:VirtualizedContainerService.HintSize="242,22" />
+      <sap2010:ViewStateData Id="NotifyEmployeeActivity_1" sap:VirtualizedContainerService.HintSize="242,22" />
       <sap2010:ViewStateData Id="Sequence_13" sap:VirtualizedContainerService.HintSize="264,248">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -738,8 +748,9 @@ state==StudyState.Initial</mca:CSharpValue>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="Receive_9" sap:VirtualizedContainerService.HintSize="255,86" />
+      <sap2010:ViewStateData Id="SetStateStudyActivity_2" sap:VirtualizedContainerService.HintSize="255,22" />
       <sap2010:ViewStateData Id="SendReply_9" sap:VirtualizedContainerService.HintSize="255,86" />
-      <sap2010:ViewStateData Id="Sequence_11" sap:VirtualizedContainerService.HintSize="277,336">
+      <sap2010:ViewStateData Id="Sequence_11" sap:VirtualizedContainerService.HintSize="277,398">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Type Type="bc:IBrandAnalyticsInternalService" x:Key="contractType" />
@@ -748,7 +759,7 @@ state==StudyState.Initial</mca:CSharpValue>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="Assign_10" sap:VirtualizedContainerService.HintSize="242,62" />
-      <sap2010:ViewStateData Id="NotifyStateActivity_3" sap:VirtualizedContainerService.HintSize="242,22" />
+      <sap2010:ViewStateData Id="NotifyClientActivity_2" sap:VirtualizedContainerService.HintSize="242,22" />
       <sap2010:ViewStateData Id="Sequence_14" sap:VirtualizedContainerService.HintSize="264,248">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -765,7 +776,7 @@ state==StudyState.Initial</mca:CSharpValue>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Transition_6" sap:VirtualizedContainerService.HintSize="430,783">
+      <sap2010:ViewStateData Id="Transition_6" sap:VirtualizedContainerService.HintSize="430,845">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:PointCollection x:Key="ConnectorLocation">444.3,360.5 444.3,390.5 450,390.5 450,439.5</av:PointCollection>
