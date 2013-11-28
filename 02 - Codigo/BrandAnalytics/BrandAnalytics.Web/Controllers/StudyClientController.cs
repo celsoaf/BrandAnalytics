@@ -56,21 +56,21 @@ namespace BrandAnalytics.Web.Controllers
         [HttpPost]
         public ActionResult Create(StudyModel model)
         {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    using (var service = new BrandAnaliticsClient.BrandAnalyticsClientServiceClient())
-                    {
-                        var token = service.RequestStudy(User.Identity.Name, model.Mark);
+            //try
+            //{
+            //    if (ModelState.IsValid)
+            //    {
+            //        using (var service = new BrandAnaliticsClient.BrandAnalyticsClientServiceClient())
+            //        {
+            //            var token = service.RequestStudy(User.Identity.Name, model.Mark);
 
-                        return RedirectToAction("Index");
-                    }
-                }
-            }
-            catch
-            {
-            }
+            //            return RedirectToAction("Index");
+            //        }
+            //    }
+            //}
+            //catch
+            //{
+            //}
 
             return View(model);
         }
@@ -99,10 +99,10 @@ namespace BrandAnalytics.Web.Controllers
         {
             try
             {
-                using (var service = new BrandAnaliticsClient.BrandAnalyticsClientServiceClient())
-                {
-                    service.CancelStudy(id);
-                }
+                //using (var service = new BrandAnaliticsClient.BrandAnalyticsClientServiceClient())
+                //{
+                //    service.CancelStudy(id);
+                //}
 
                 return RedirectToAction("Index");
             }

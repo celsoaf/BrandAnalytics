@@ -24,5 +24,44 @@ namespace BrandAnalytics.Web.Controllers
             }
         }
 
+        public ActionResult Submit(int id)
+        {
+            var model = new StudySubmitModel() { Id = id };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Submit(StudySubmitModel model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    //using (var service = new BrandAnaliticsEmployee.BrandAnalyticsClientServiceClient())
+                    //{
+                    //    var token = service.;
+
+                    //    return RedirectToAction("Index");
+                    //}
+                }
+            }
+            catch
+            {
+            }
+
+
+            return View(model);
+        }
+
+        public ActionResult Repeat(int id)
+        {
+            return View();
+        }
+
+        public ActionResult Finalize(int id)
+        {
+            return View();
+        }
     }
 }

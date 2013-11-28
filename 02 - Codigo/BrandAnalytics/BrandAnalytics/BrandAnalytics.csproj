@@ -71,11 +71,13 @@
     <Compile Include="Activities\NotifyClientActivity.cs" />
     <Compile Include="Activities\SaveReportActivity.cs" />
     <Compile Include="Activities\SaveSearchActivity.cs" />
+    <Compile Include="Contracts\IBrandAnalyticsService.cs" />
     <Compile Include="Service References\TwitterSpyService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Content Include="Service Contracts\IBrandAnalyticsService\contractTypeName" />
     <None Include="Service References\TwitterSpyService\TwitterSpyService.disco" />
     <None Include="Service References\TwitterSpyService\configuration91.svcinfo" />
     <None Include="Service References\TwitterSpyService\configuration.svcinfo" />
@@ -93,10 +95,7 @@
     </Content>
     <Compile Include="Activities\SetStateStudyActivity.cs" />
     <Compile Include="Activities\SaveNewStudyActivity.cs" />
-    <Compile Include="Contracts\IBrandAnalyticsClientService.cs" />
-    <Compile Include="Contracts\IBrandAnalyticsInternalService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Content Include="Service Contracts\IBrandAnalyticsInternalService\contractTypeName" />
     <None Include="Service References\TwitterSpyService\TwitterSpyService2.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -123,27 +122,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Service Contracts\IBrandAnalyticsClientService\contractTypeName" />
-  </ItemGroup>
-  <ItemGroup>
-    <XamlAppDef Include="Service Contracts\IBrandAnalyticsClientService\RequestStudy_ReceiveAndSendReply.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </XamlAppDef>
-  </ItemGroup>
-  <ItemGroup>
-    <XamlAppDef Include="Service Contracts\IBrandAnalyticsClientService\GetState_ReceiveAndSendReply.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </XamlAppDef>
-  </ItemGroup>
-  <ItemGroup>
-    <XamlAppDef Include="Service Contracts\IBrandAnalyticsClientService\CancelStudy_ReceiveAndSendReply.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </XamlAppDef>
   </ItemGroup>
   <ItemGroup>
     <Content Include="BrandAnalyticsService.xamlx">
@@ -173,19 +151,37 @@
     </XamlAppDef>
   </ItemGroup>
   <ItemGroup>
-    <XamlAppDef Include="Service Contracts\IBrandAnalyticsInternalService\SpyTopics_ReceiveAndSendReply.xaml">
+    <XamlAppDef Include="Service Contracts\IBrandAnalyticsService\RequestStudy_ReceiveAndSendReply.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </XamlAppDef>
   </ItemGroup>
   <ItemGroup>
-    <XamlAppDef Include="Service Contracts\IBrandAnalyticsInternalService\RepeatSpyTopics_ReceiveAndSendReply.xaml">
+    <XamlAppDef Include="Service Contracts\IBrandAnalyticsService\GetState_ReceiveAndSendReply.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </XamlAppDef>
   </ItemGroup>
   <ItemGroup>
-    <XamlAppDef Include="Service Contracts\IBrandAnalyticsInternalService\Finalize_ReceiveAndSendReply.xaml">
+    <XamlAppDef Include="Service Contracts\IBrandAnalyticsService\CancelStudy_ReceiveAndSendReply.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </XamlAppDef>
+  </ItemGroup>
+  <ItemGroup>
+    <XamlAppDef Include="Service Contracts\IBrandAnalyticsService\SpyTopics_ReceiveAndSendReply.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </XamlAppDef>
+  </ItemGroup>
+  <ItemGroup>
+    <XamlAppDef Include="Service Contracts\IBrandAnalyticsService\RepeatSpyTopics_ReceiveAndSendReply.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </XamlAppDef>
+  </ItemGroup>
+  <ItemGroup>
+    <XamlAppDef Include="Service Contracts\IBrandAnalyticsService\Finalize_ReceiveAndSendReply.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </XamlAppDef>

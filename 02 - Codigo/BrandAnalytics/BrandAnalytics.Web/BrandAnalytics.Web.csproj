@@ -197,18 +197,14 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\StudyClientModel.cs" />
+    <Compile Include="Models\StudySubmitModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Service References\BrandAnaliticsClient\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Service References\BrandAnaliticsInternal\Reference.cs">
+    <Compile Include="Service References\BrandAnalyticsService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -293,27 +289,16 @@
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <None Include="Service References\BrandAnaliticsClient\BrandAnalyticsService.disco" />
-    <None Include="Service References\BrandAnaliticsClient\BrandAnalyticsService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\BrandAnaliticsClient\BrandAnalyticsService4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\BrandAnaliticsClient\configuration91.svcinfo" />
-    <None Include="Service References\BrandAnaliticsClient\configuration.svcinfo" />
-    <None Include="Service References\BrandAnaliticsClient\Reference.svcmap">
+    <Content Include="Service References\BrandAnalyticsService\BrandAnalyticsService.disco" />
+    <Content Include="Service References\BrandAnalyticsService\configuration91.svcinfo" />
+    <Content Include="Service References\BrandAnalyticsService\configuration.svcinfo" />
+    <Content Include="Service References\BrandAnalyticsService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Service References\BrandAnaliticsInternal\BrandAnalyticsService.disco" />
-    <None Include="Service References\BrandAnaliticsInternal\configuration91.svcinfo" />
-    <None Include="Service References\BrandAnaliticsInternal\configuration.svcinfo" />
-    <None Include="Service References\BrandAnaliticsInternal\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <Content Include="Web.config" />
+    </Content>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -352,23 +337,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
-    <None Include="Service References\BrandAnaliticsClient\BrandAnalyticsService.wsdl" />
-    <None Include="Service References\BrandAnaliticsClient\BrandAnalyticsService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\BrandAnaliticsClient\BrandAnalyticsService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\BrandAnaliticsInternal\BrandAnalyticsService.wsdl" />
-    <None Include="Service References\BrandAnaliticsInternal\BrandAnalyticsService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\BrandAnaliticsInternal\BrandAnalyticsService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\BrandAnaliticsInternal\BrandAnalyticsService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <Content Include="Views\StudyClient\Cancel.cshtml" />
     <Content Include="Views\StudyClient\Create.cshtml" />
     <Content Include="Views\StudyClient\Delete.cshtml" />
@@ -376,6 +344,16 @@
     <Content Include="Views\StudyEmployee\Index.cshtml" />
     <Content Include="Views\Notification\Index.cshtml" />
     <Content Include="Views\Notification\Delete.cshtml" />
+    <Content Include="Service References\BrandAnalyticsService\BrandAnalyticsService.wsdl" />
+    <None Include="Service References\BrandAnalyticsService\BrandAnalyticsService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BrandAnalyticsService\BrandAnalyticsService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BrandAnalyticsService\BrandAnalyticsService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -397,8 +375,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\BrandAnaliticsClient\" />
-    <WCFMetadataStorage Include="Service References\BrandAnaliticsInternal\" />
+    <WCFMetadataStorage Include="Service References\BrandAnalyticsService\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
