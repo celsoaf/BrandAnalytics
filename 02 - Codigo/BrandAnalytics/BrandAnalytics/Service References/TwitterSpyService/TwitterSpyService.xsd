@@ -4,10 +4,23 @@
   <xs:complexType name="ReportModel">
     <xs:sequence>
       <xs:element minOccurs="0" name="Authors" type="xs:int" />
-      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Terms" nillable="true" type="q1:ArrayOfstring" />
-      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Topics" nillable="true" type="q2:ArrayOfstring" />
+      <xs:element minOccurs="0" name="Terms" nillable="true" type="tns:ArrayOfReportTermModel" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Topics" nillable="true" type="q1:ArrayOfstring" />
       <xs:element minOccurs="0" name="Tweets" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ReportModel" nillable="true" type="tns:ReportModel" />
+  <xs:complexType name="ArrayOfReportTermModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ReportTermModel" nillable="true" type="tns:ReportTermModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfReportTermModel" nillable="true" type="tns:ArrayOfReportTermModel" />
+  <xs:complexType name="ReportTermModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Count" type="xs:int" />
+      <xs:element minOccurs="0" name="Term" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReportTermModel" nillable="true" type="tns:ReportTermModel" />
 </xs:schema>

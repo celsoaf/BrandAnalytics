@@ -67,19 +67,22 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Activities\NotifyStateActivity.cs" />
+    <Compile Include="Activities\SaveReportActivity.cs" />
+    <Compile Include="Activities\SaveSearchActivity.cs" />
     <Compile Include="Service References\TwitterSpyService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Content Include="Service References\TwitterSpyService\TwitterSpyService.disco" />
-    <Content Include="Service References\TwitterSpyService\configuration91.svcinfo" />
-    <Content Include="Service References\TwitterSpyService\configuration.svcinfo" />
-    <Content Include="Service References\TwitterSpyService\Reference.svcmap">
+    <None Include="Service References\TwitterSpyService\TwitterSpyService.disco" />
+    <None Include="Service References\TwitterSpyService\configuration91.svcinfo" />
+    <None Include="Service References\TwitterSpyService\configuration.svcinfo" />
+    <None Include="Service References\TwitterSpyService\Reference.svcmap">
       <Generator>Xaml Activity Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
-    <Content Include="Service References\TwitterSpyService\endpointConfigurationNameResolver.svcinfo" />
+    </None>
+    <None Include="Service References\TwitterSpyService\endpointConfigurationNameResolver.svcinfo" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -87,7 +90,7 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Compile Include="Activities\CancelStudyActivity.cs" />
+    <Compile Include="Activities\SetStateStudyActivity.cs" />
     <Compile Include="Activities\SaveNewStudyActivity.cs" />
     <Compile Include="Contracts\IBrandAnalyticsClientService.cs" />
     <Compile Include="Contracts\IBrandAnalyticsInternalService.cs" />
@@ -111,6 +114,10 @@
     <ProjectReference Include="..\BrandAnalytics.Infrastructure\BrandAnalytics.Infrastructure.csproj">
       <Project>{6ad51482-bc52-4b12-958c-84ad9813d761}</Project>
       <Name>BrandAnalytics.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TwitterSpy\TwitterSpy.csproj">
+      <Project>{1B33828C-B7AB-449E-8ED4-C5B146232FCB}</Project>
+      <Name>TwitterSpy</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -149,7 +156,7 @@
     <WCFMetadataStorage Include="Service References\TwitterSpyService\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Service References\TwitterSpyService\TwitterSpyService.wsdl" />
+    <None Include="Service References\TwitterSpyService\TwitterSpyService.wsdl" />
     <None Include="Service References\TwitterSpyService\TwitterSpyService.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -161,6 +168,24 @@
     <XamlAppDef Include="Service References\TwitterSpyService\BrandAnalytics.TwitterSpyService.ITwitterSpyService.SpyTopics.xaml">
       <Generator>MSBuild:Compile</Generator>
       <DependentUpon>Reference.svcmap</DependentUpon>
+      <SubType>Designer</SubType>
+    </XamlAppDef>
+  </ItemGroup>
+  <ItemGroup>
+    <XamlAppDef Include="Service Contracts\IBrandAnalyticsInternalService\SpyTopics_ReceiveAndSendReply.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </XamlAppDef>
+  </ItemGroup>
+  <ItemGroup>
+    <XamlAppDef Include="Service Contracts\IBrandAnalyticsInternalService\RepeatSpyTopics_ReceiveAndSendReply.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </XamlAppDef>
+  </ItemGroup>
+  <ItemGroup>
+    <XamlAppDef Include="Service Contracts\IBrandAnalyticsInternalService\Finalize_ReceiveAndSendReply.xaml">
+      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </XamlAppDef>
   </ItemGroup>

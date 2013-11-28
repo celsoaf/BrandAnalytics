@@ -26,7 +26,7 @@ namespace BrandAnalytics.TwitterSpyService {
         private int AuthorsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string[] TermsField;
+        private BrandAnalytics.TwitterSpyService.ReportTermModel[] TermsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string[] TopicsField;
@@ -57,7 +57,7 @@ namespace BrandAnalytics.TwitterSpyService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string[] Terms {
+        public BrandAnalytics.TwitterSpyService.ReportTermModel[] Terms {
             get {
                 return this.TermsField;
             }
@@ -91,6 +91,66 @@ namespace BrandAnalytics.TwitterSpyService {
                 if ((this.TweetsField.Equals(value) != true)) {
                     this.TweetsField = value;
                     this.RaisePropertyChanged("Tweets");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ReportTermModel", Namespace="http://schemas.datacontract.org/2004/07/TwitterSpy.Models")]
+    [System.SerializableAttribute()]
+    public partial class ReportTermModel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CountField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TermField;
+        
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Count {
+            get {
+                return this.CountField;
+            }
+            set {
+                if ((this.CountField.Equals(value) != true)) {
+                    this.CountField = value;
+                    this.RaisePropertyChanged("Count");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Term {
+            get {
+                return this.TermField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TermField, value) != true)) {
+                    this.TermField = value;
+                    this.RaisePropertyChanged("Term");
                 }
             }
         }
