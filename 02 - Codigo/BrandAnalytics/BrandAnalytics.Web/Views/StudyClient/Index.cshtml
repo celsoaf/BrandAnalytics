@@ -51,7 +51,7 @@
             </td>
             <td>
                 @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @if (item.State == StudyState.Collected.ToString() || item.State == StudyState.Finished.ToString())
+                @if (item.State == StudyState.Finished.ToString())
                 { 
                     <span>@Html.ActionLink("Report", "Index", "Report", new { id = item.Id }, null) |</span> 
                 }

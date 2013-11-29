@@ -31,6 +31,15 @@ namespace BrandAnalytics.Activities
 
                     if (study.Report.Terms == null)
                         study.Report.Terms = new List<StudyTermReport>();
+                    else
+                    {
+                        foreach (var item in study.Report.Terms.ToList())
+                        {
+                            study.Report.Terms.Remove(item);
+                            ctx.ReportTerms.Remove(item);
+                        }
+                    }
+
                     foreach (var item in report.Terms)
                     {
                         study.Report.Terms.Add(new StudyTermReport()

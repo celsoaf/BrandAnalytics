@@ -29,7 +29,12 @@ namespace BrandAnalytics.Activities
 
                     study.Duration = Duration.Get(context);
 
-                    study.Topics.Clear();
+                    foreach (var item in study.Topics.ToList())
+                    {
+                        study.Topics.Remove(item);
+                        ctx.Topics.Remove(item);
+                    }
+
                     var topics = Topics.Get(context);
                     foreach (var item in topics)
                         study.Topics.Add(new StudyTopic() { Name = item });
