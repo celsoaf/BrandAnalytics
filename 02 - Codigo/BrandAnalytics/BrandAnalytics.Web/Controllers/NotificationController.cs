@@ -20,7 +20,7 @@ namespace BrandAnalytics.Web.Controllers
                 var user = ctx.Clients.FirstOrDefault(c => c.UserName == userName);
                 if (user != null)
                 {
-                    var list = user.Notifications.ToList();
+                    var list = user.Notifications.OrderBy(n => n.Created).ToList();
 
                     return View(list);
                 }

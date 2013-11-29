@@ -24,8 +24,8 @@ namespace BrandAnalytics.Activities
                 {
                     study.Employee.Notifications.Add(new Notification()
                     {
-                        Subject = string.Format("Study {0} in state {1}", study.Mark, study.State),
-                        Body = string.Format("Study {0} in state {1}", study.Mark, study.State)
+                        Subject = string.Format("Study {0}", study.Mark),
+                        Body = string.Format("Study {0} id, {1} mark in state {2}", study.Id, study.Mark, study.State)
                     });
                     //emailService.Send(study.Client.Email,
                     //            string.Format("Study {0} in state {1}", study.Mark, study.State),
