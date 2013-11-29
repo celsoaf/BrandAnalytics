@@ -8,9 +8,6 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table>
     <tr>
         <th>
@@ -43,15 +40,15 @@
             @Html.DisplayFor(modelItem => item.Running)
         </td>
         <td>
-            @if (item.State == StudyState.Waiting.ToString())
+            @if (item.Running && item.State == StudyState.Waiting.ToString())
             { 
                 <span>@Html.ActionLink("Submit", "Submit", new { id=item.Id }) |</span> 
             }
-            @if (item.State == StudyState.Collected.ToString())
+            @if (item.Running && item.State == StudyState.Collected.ToString())
             { 
                 <span>@Html.ActionLink("Repeat", "Repeat", new { id=item.Id }) |</span> 
             }
-            @if (item.State == StudyState.Collected.ToString())
+            @if (item.Running && item.State == StudyState.Collected.ToString())
             { 
                 <span>@Html.ActionLink("Finalize", "Finalize", new { id=item.Id }) |</span> 
             }

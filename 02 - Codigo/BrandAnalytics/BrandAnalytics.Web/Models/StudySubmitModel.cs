@@ -9,6 +9,6 @@ namespace BrandAnalytics.Web.Models
     {
         public int Id { get; set; }
         public int Duration { get; set; }
-        public List<string> Topics { get; set; }
+        public string Topics { get; set; }
     }
 }

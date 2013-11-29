@@ -26,7 +26,7 @@ namespace BrandAnalytics.Web.Controllers
 
         public ActionResult Submit(int id)
         {
-            var model = new StudySubmitModel() { Id = id };
+            var model = new StudySubmitModel() { Id = id, Duration = 10 };
 
             return View(model);
         }
@@ -34,33 +34,64 @@ namespace BrandAnalytics.Web.Controllers
         [HttpPost]
         public ActionResult Submit(StudySubmitModel model)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
+                using (var service = new BrandAnalyticsClient.BrandAnalyticsServiceClient())
                 {
-                    //using (var service = new BrandAnaliticsEmployee.BrandAnalyticsClientServiceClient())
-                    //{
-                    //    var token = service.;
+                    service.SpyTopics(model.Id, User.Identity.Name, model.Topics, model.Duration);
 
-                    //    return RedirectToAction("Index");
-                    //}
+                    return RedirectToAction("Index");
                 }
             }
-            catch
-            {
-            }
-
-
             return View(model);
         }
 
         public ActionResult Repeat(int id)
         {
-            return View();
+            var model = new StudySubmitModel() { Id = id, Duration = 10 };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Repeat(StudySubmitModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                using (var service = new BrandAnalyticsClient.BrandAnalyticsServiceClient())
+                {
+                    service.RepeatSpyTopics(model.Id, User.Identity.Name, model.Topics, model.Duration);
+
+                    return RedirectToAction("Index");
+                }
+            }
+
+            return View(model);
         }
 
         public ActionResult Finalize(int id)
         {
+            using (var ctx = new BrandAnalyticsDB())
+            {
+                var model = ctx.Studies
+                    .Where(s => s.Id == id)
+                    .Select(StudyUtils.TranslateStudie)
+                    .FirstOrDefault();
+
+                return View(model);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Finalize(int id, FormCollection collection)
+        {
+            using (var service = new BrandAnalyticsClient.BrandAnalyticsServiceClient())
+            {
+                service.Finalize(id);
+
+                return RedirectToAction("Index");
+            }
+
             return View();
         }
     }

@@ -1,0 +1,47 @@
+﻿@model BrandAnalytics.Web.Models.StudyModel
+
+@{
+    ViewBag.Title = "Finalize";
+}
+
+<h2>Finalize</h2>
+
+<h3>Are you sure you want to finalize this?</h3>
+<fieldset>
+    <legend>StudyModel</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Mark)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Mark)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.State)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.State)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Duration)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Duration)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Running)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Running)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Finalize" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

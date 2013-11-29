@@ -37,7 +37,15 @@ namespace BrandAnalytics.Web.Controllers
 
         public ActionResult Details(int id)
         {
-            return View();
+            using (var ctx = new BrandAnalyticsDB())
+            {
+                var model = ctx.Studies
+                    .Where(s => s.Id == id)
+                    .Select(StudyUtils.TranslateStudie)
+                    .FirstOrDefault();
+
+                return View(model);
+            }
         }
 
         //
@@ -56,20 +64,14 @@ namespace BrandAnalytics.Web.Controllers
         [HttpPost]
         public ActionResult Create(StudyModel model)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
+                using (var service = new BrandAnalyticsClient.BrandAnalyticsServiceClient())
                 {
-                    using (var service = new BrandAnalyticsClient.BrandAnalyticsServiceClient())
-                    {
-                        var token = service.RequestStudy(User.Identity.Name, model.Mark);
+                    var token = service.RequestStudy(User.Identity.Name, model.Mark);
 
-                        return RedirectToAction("Index");
-                    }
+                    return RedirectToAction("Index");
                 }
-            }
-            catch
-            {
             }
 
             return View(model);
@@ -97,19 +99,12 @@ namespace BrandAnalytics.Web.Controllers
         [HttpPost]
         public ActionResult Cancel(int id, FormCollection collection)
         {
-            try
+            using (var service = new BrandAnalyticsClient.BrandAnalyticsServiceClient())
             {
-                using (var service = new BrandAnalyticsClient.BrandAnalyticsServiceClient())
-                {
-                    service.CancelStudy(id);
-                }
+                service.CancelStudy(id);
+            }
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index");
         }
 
         //
@@ -132,35 +127,28 @@ namespace BrandAnalytics.Web.Controllers
         // POST: /Study/Delete/5
 
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(StudyModel model)
         {
-            try
+            using (var ctx = new BrandAnalyticsDB())
             {
-                using (var ctx = new BrandAnalyticsDB())
+                var study = ctx.Studies.FirstOrDefault(s => s.Id == model.Id);
+
+                if (study != null)
                 {
-                    var study = ctx.Studies.FirstOrDefault(s => s.Id == id);
-
-                    if (study != null)
+                    if (study.Report != null)
                     {
-                        if (study.Report != null)
+                        foreach (var item in study.Report.Terms.ToList())
                         {
-                            foreach (var item in study.Report.Terms)
-                            {
-                                ctx.ReportTerms.Remove(item);
-                            }
-                            ctx.Reports.Remove(study.Report);
+                            ctx.ReportTerms.Remove(item);
                         }
-                        ctx.Studies.Remove(study);
-                        ctx.SaveChanges();
+                        ctx.Reports.Remove(study.Report);
                     }
+                    ctx.Studies.Remove(study);
+                    ctx.SaveChanges();
                 }
+            }
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index");
         }
     }
 }

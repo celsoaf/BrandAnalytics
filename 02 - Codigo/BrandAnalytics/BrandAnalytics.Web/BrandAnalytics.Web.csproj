@@ -351,6 +351,10 @@
     <None Include="Service References\BrandAnalyticsClient\BrandAnalyticsService2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Views\StudyEmployee\Submit.cshtml" />
+    <Content Include="Views\StudyEmployee\Repeat.cshtml" />
+    <Content Include="Views\StudyClient\Details.cshtml" />
+    <Content Include="Views\StudyEmployee\Finalize.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
