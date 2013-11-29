@@ -1,0 +1,64 @@
+﻿@model BrandAnalytics.Data.Models.Study
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<fieldset>
+    <legend>Study</legend>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Mark)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Mark)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Duration)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Duration)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Report.Authors)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Report.Authors)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Report.Tweets)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Report.Tweets)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Report.Terms)
+    </div>
+    <table>
+        <tr>
+            <th>Term
+            </th>
+            <th>Count
+            </th>
+        </tr>
+
+        @foreach (var item in Model.Report.Terms)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Term)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Count)
+                </td>
+            </tr>
+        }
+
+    </table>
+</fieldset>

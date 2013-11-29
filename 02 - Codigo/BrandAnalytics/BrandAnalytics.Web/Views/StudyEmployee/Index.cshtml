@@ -40,6 +40,10 @@
             @Html.DisplayFor(modelItem => item.Running)
         </td>
         <td>
+            @if (item.State == StudyState.Collected.ToString() || item.State == StudyState.Finished.ToString())
+            { 
+                <span>@Html.ActionLink("Report", "Index", "Report", new { id=item.Id }, null) |</span> 
+            }
             @if (item.Running && item.State == StudyState.Waiting.ToString())
             { 
                 <span>@Html.ActionLink("Submit", "Submit", new { id=item.Id }) |</span> 

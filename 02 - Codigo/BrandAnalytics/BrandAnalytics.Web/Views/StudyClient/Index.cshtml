@@ -1,4 +1,6 @@
-﻿@model IEnumerable<BrandAnalytics.Web.Models.StudyModel>
+﻿@using BrandAnalytics.Data.Enums
+
+@model IEnumerable<BrandAnalytics.Web.Models.StudyModel>
 
 @{
     ViewBag.Title = "Index";
@@ -29,7 +31,8 @@
         <th></th>
     </tr>
 
-    @foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Id)
@@ -47,17 +50,21 @@
                 @Html.DisplayFor(modelItem => item.Duration)
             </td>
             <td>
-                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @if (item.State == StudyState.Collected.ToString() || item.State == StudyState.Finished.ToString())
+                { 
+                    <span>@Html.ActionLink("Report", "Index", "Report", new { id = item.Id }, null) |</span> 
+                }
                 @if (item.Running)
                 { 
-                    @Html.ActionLink("Cancel", "Cancel", new { id=item.Id }) 
+                    @Html.ActionLink("Cancel", "Cancel", new { id = item.Id }) 
                 } | 
-                @if(User.IsInRole(BrandAnalytics.Web.Utils.ApplicationRoles.AuthorizationManage))
+                @if (User.IsInRole(BrandAnalytics.Web.Utils.ApplicationRoles.AuthorizationManage))
                 {
-                    @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
                 }
             </td>
         </tr>
-}
+    }
 
 </table>
