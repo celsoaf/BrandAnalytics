@@ -11,8 +11,8 @@ namespace BrandAnalytics.Web.Utils
     {
         public static StudyModel TranslateStudie(Study study)
         {
-            //using (var service = new BrandAnaliticsClient.BrandAnalyticsClientServiceClient())
-            //{
+            using (var service = new BrandAnalyticsClient.BrandAnalyticsServiceClient())
+            {
                 var res = new StudyModel()
                 {
                     Id = study.Id,
@@ -21,15 +21,15 @@ namespace BrandAnalytics.Web.Utils
                     State = study.State.ToString()
                 };
 
-                //try
-                //{
-                //    res.State = service.GetState(study.Id);
-                //    res.Running = true;
-                //}
-                //catch { res.Running = false; }
+                try
+                {
+                    res.State = service.GetState(study.Id);
+                    res.Running = true;
+                }
+                catch { res.Running = false; }
 
                 return res;
-            //}
+            }
         }
     }
 }

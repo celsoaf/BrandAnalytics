@@ -20,10 +20,10 @@ namespace BrandAnalytics.Contracts
         void CancelStudy(int token);
 
         [OperationContract]
-        void SpyTopics(string userName, int token, string[] topics, TimeSpan duration);
+        void SpyTopics(int token, string userName, string topics, int seconds);
 
         [OperationContract]
-        void RepeatSpyTopics(string userName, int token, string[] topics, TimeSpan duration);
+        void RepeatSpyTopics(int token, string userName, string topics, int seconds);
 
         [OperationContract]
         void Finalize(int token);

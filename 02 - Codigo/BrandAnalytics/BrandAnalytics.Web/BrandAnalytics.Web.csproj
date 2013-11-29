@@ -204,7 +204,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Service References\BrandAnalyticsService\Reference.cs">
+    <Compile Include="Service References\BrandAnalyticsClient\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -289,13 +289,13 @@
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Service References\BrandAnalyticsService\BrandAnalyticsService.disco" />
-    <Content Include="Service References\BrandAnalyticsService\configuration91.svcinfo" />
-    <Content Include="Service References\BrandAnalyticsService\configuration.svcinfo" />
-    <Content Include="Service References\BrandAnalyticsService\Reference.svcmap">
+    <None Include="Service References\BrandAnalyticsClient\BrandAnalyticsService.disco" />
+    <None Include="Service References\BrandAnalyticsClient\configuration91.svcinfo" />
+    <None Include="Service References\BrandAnalyticsClient\configuration.svcinfo" />
+    <None Include="Service References\BrandAnalyticsClient\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
+    </None>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -344,14 +344,11 @@
     <Content Include="Views\StudyEmployee\Index.cshtml" />
     <Content Include="Views\Notification\Index.cshtml" />
     <Content Include="Views\Notification\Delete.cshtml" />
-    <Content Include="Service References\BrandAnalyticsService\BrandAnalyticsService.wsdl" />
-    <None Include="Service References\BrandAnalyticsService\BrandAnalyticsService.xsd">
+    <None Include="Service References\BrandAnalyticsClient\BrandAnalyticsService.wsdl" />
+    <None Include="Service References\BrandAnalyticsClient\BrandAnalyticsService1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\BrandAnalyticsService\BrandAnalyticsService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\BrandAnalyticsService\BrandAnalyticsService2.xsd">
+    <None Include="Service References\BrandAnalyticsClient\BrandAnalyticsService2.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -375,7 +372,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\BrandAnalyticsService\" />
+    <WCFMetadataStorage Include="Service References\BrandAnalyticsClient\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:1428/BrandAnalyticsService.xamlx?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-  <xs:import schemaLocation="http://localhost:1428/BrandAnalyticsService.xamlx?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:element name="GetState">
     <xs:complexType>
       <xs:sequence>
@@ -46,10 +44,10 @@
   <xs:element name="SpyTopics">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="token" type="xs:int" />
-        <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="topics" nillable="true" type="q1:ArrayOfstring" />
-        <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="duration" type="q2:duration" />
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="topics" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="seconds" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -61,10 +59,10 @@
   <xs:element name="RepeatSpyTopics">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="token" type="xs:int" />
-        <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="topics" nillable="true" type="q3:ArrayOfstring" />
-        <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="duration" type="q4:duration" />
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="topics" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="seconds" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
