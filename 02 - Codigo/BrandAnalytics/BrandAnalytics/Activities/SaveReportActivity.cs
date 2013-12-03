@@ -11,7 +11,7 @@ namespace BrandAnalytics.Activities
     public class SaveReportActivity : CodeActivity
     {
         public InArgument<int> StudyId { get; set; }
-        public InArgument<TwitterSpyService.ReportModel> Report { get; set; }
+        public InArgument<TwitterSpy.Models.ReportModel> Report { get; set; }
 
         protected override void Execute(CodeActivityContext context)
         {

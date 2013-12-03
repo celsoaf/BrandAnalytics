@@ -18,8 +18,9 @@
  xmlns:sc="clr-namespace:System.ComponentModel;assembly=System"
  xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
  xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
- xmlns:srs="clr-namespace:System.Runtime.Serialization;assembly=System.Runtime.Serialization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
  xmlns:ssx="clr-namespace:System.ServiceModel.XamlIntegration;assembly=System.ServiceModel"
+ xmlns:tm="clr-namespace:TwitterSpy.Models;assembly=TwitterSpy"
+ xmlns:tm1="clr-namespace:TwitterSpy.Models;assembly=TwitterSpy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <p1:Sequence DisplayName="Sequential Service" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <p1:TextExpression.Namespaces>
@@ -31,6 +32,7 @@
         <x:String>System.Text</x:String>
         <x:String>BrandAnalytics.Data.Enums</x:String>
         <x:String>BrandAnalytics.TwitterSpyService</x:String>
+        <x:String>TwitterSpy.Models</x:String>
       </sco:Collection>
     </p1:TextExpression.Namespaces>
     <p1:TextExpression.References>
@@ -304,37 +306,56 @@
                           <p1:State.Transitions>
                             <p1:Transition DisplayName="T4" sap2010:WorkflowViewState.IdRef="Transition_4">
                               <p1:Transition.Trigger>
-                                <p1:Sequence sap2010:WorkflowViewState.IdRef="Sequence_9">
-                                  <bta:SpyTopics sap2010:WorkflowViewState.IdRef="SpyTopics_1" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces">
-                                    <bta:SpyTopics.SpyTopicsResult>
-                                      <p1:OutArgument x:TypeArguments="bt:ReportModel">
-                                        <mca:CSharpReference x:TypeArguments="bt:ReportModel">report</mca:CSharpReference>
-                                      </p1:OutArgument>
-                                    </bta:SpyTopics.SpyTopicsResult>
-                                    <bta:SpyTopics.duration>
-                                      <p1:InArgument x:TypeArguments="x:TimeSpan">
-                                        <mca:CSharpValue x:TypeArguments="x:TimeSpan">duration</mca:CSharpValue>
-                                      </p1:InArgument>
-                                    </bta:SpyTopics.duration>
-                                    <bta:SpyTopics.topics>
-                                      <p1:InArgument x:TypeArguments="s:String[]">
-                                        <mca:CSharpValue x:TypeArguments="s:String[]">topics</mca:CSharpValue>
-                                      </p1:InArgument>
-                                    </bta:SpyTopics.topics>
-                                  </bta:SpyTopics>
-                                  <ba:SaveReportActivity sap2010:WorkflowViewState.IdRef="SaveReportActivity_1">
-                                    <ba:SaveReportActivity.Report>
-                                      <p1:InArgument x:TypeArguments="bt:ReportModel">
-                                        <mca:CSharpValue x:TypeArguments="bt:ReportModel">report</mca:CSharpValue>
-                                      </p1:InArgument>
-                                    </ba:SaveReportActivity.Report>
-                                    <ba:SaveReportActivity.StudyId>
-                                      <p1:InArgument x:TypeArguments="x:Int32">
-                                        <mca:CSharpValue x:TypeArguments="x:Int32">studyid</mca:CSharpValue>
-                                      </p1:InArgument>
-                                    </ba:SaveReportActivity.StudyId>
-                                  </ba:SaveReportActivity>
-                                </p1:Sequence>
+                                <p1:CancellationScope sap2010:WorkflowViewState.IdRef="CancellationScope_1">
+                                  <p1:CancellationScope.Variables>
+                                    <p1:Variable x:TypeArguments="tm:ReportModel" Name="report" />
+                                  </p1:CancellationScope.Variables>
+                                  <p1:Sequence sap2010:WorkflowViewState.IdRef="Sequence_33">
+                                    <bta:SpyTopics sap2010:WorkflowViewState.IdRef="SpyTopics_1" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces">
+                                      <bta:SpyTopics.SpyTopicsResult>
+                                        <p1:OutArgument x:TypeArguments="tm:ReportModel">
+                                          <mca:CSharpReference x:TypeArguments="tm:ReportModel">report</mca:CSharpReference>
+                                        </p1:OutArgument>
+                                      </bta:SpyTopics.SpyTopicsResult>
+                                      <bta:SpyTopics.duration>
+                                        <p1:InArgument x:TypeArguments="x:TimeSpan">
+                                          <mca:CSharpValue x:TypeArguments="x:TimeSpan">duration</mca:CSharpValue>
+                                        </p1:InArgument>
+                                      </bta:SpyTopics.duration>
+                                      <bta:SpyTopics.token>
+                                        <p1:InArgument x:TypeArguments="x:Int32">
+                                          <mca:CSharpValue x:TypeArguments="x:Int32">studyid</mca:CSharpValue>
+                                        </p1:InArgument>
+                                      </bta:SpyTopics.token>
+                                      <bta:SpyTopics.topics>
+                                        <p1:InArgument x:TypeArguments="s:String[]">
+                                          <mca:CSharpValue x:TypeArguments="s:String[]">topics</mca:CSharpValue>
+                                        </p1:InArgument>
+                                      </bta:SpyTopics.topics>
+                                    </bta:SpyTopics>
+                                    <ba:SaveReportActivity sap2010:WorkflowViewState.IdRef="SaveReportActivity_1">
+                                      <ba:SaveReportActivity.Report>
+                                        <p1:InArgument x:TypeArguments="tm:ReportModel">
+                                          <mca:CSharpValue x:TypeArguments="tm:ReportModel">report</mca:CSharpValue>
+                                        </p1:InArgument>
+                                      </ba:SaveReportActivity.Report>
+                                      <ba:SaveReportActivity.StudyId>
+                                        <p1:InArgument x:TypeArguments="x:Int32">
+                                          <mca:CSharpValue x:TypeArguments="x:Int32">studyid</mca:CSharpValue>
+                                        </p1:InArgument>
+                                      </ba:SaveReportActivity.StudyId>
+                                    </ba:SaveReportActivity>
+                                  </p1:Sequence>
+                                  <p1:CancellationScope.CancellationHandler>
+                                    <bta:CancelSpyTopics sap2010:WorkflowViewState.IdRef="CancelSpyTopics_1" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces">
+                                      <bta:CancelSpyTopics.token>
+                                        <p1:InArgument x:TypeArguments="x:Int32">
+                                          <mca:CSharpValue x:TypeArguments="x:Int32">studyid</mca:CSharpValue>
+                                        </p1:InArgument>
+                                      </bta:CancelSpyTopics.token>
+                                    </bta:CancelSpyTopics>
+                                  </p1:CancellationScope.CancellationHandler>
+                                </p1:CancellationScope>
                               </p1:Transition.Trigger>
                               <p1:Transition.To>
                                 <p1:State x:Name="__ReferenceID10" DisplayName="Collected" sap2010:WorkflowViewState.IdRef="State_5">
@@ -568,7 +589,6 @@
         <p1:StateMachine.Variables>
           <p1:Variable x:TypeArguments="s:String[]" Name="topics" />
           <p1:Variable x:TypeArguments="x:TimeSpan" Name="duration" />
-          <p1:Variable x:TypeArguments="bt:ReportModel" Name="report" />
         </p1:StateMachine.Variables>
       </p1:StateMachine>
       <p1:DoWhile sap2010:WorkflowViewState.IdRef="DoWhile_1">
@@ -674,7 +694,7 @@ state==StudyState.Initial</mca:CSharpValue>
         </SendReply>
       </p1:Sequence>
     </p1:Parallel>
-    <sads:DebugSymbol.Symbol>d2ZDOlxHaXQtSVNFTFxDT1NcVHJhYmFsaG8gUHJhdGljb1wwMiAtIENvZGlnb1xCcmFuZEFuYWx5dGljc1xCcmFuZEFuYWx5dGljc1xCcmFuZEFuYWx5dGljc1NlcnZpY2UueGFtbHh2GAOmBREBAUoLSmEBAlAFpAUTAQhRB70EGQFBvgQH8AQUASbxBAejBRUBClBTUFkBCVIJswQUAr4EpAERrwQcApADmAIZqwQkAsAC1AIhpwQsAWKLBCmjBDQBQsAEC8MELAE7xQQJ7wQXASf1BAmTBRMBHZQFCZ8FJAEOoAUJogUVAQtUDV8ZApgFZBGhAR8CwASmARWxASECqwS2ARmVAicCkgOaAh2uAisC8gKzAiHRAi8CwgLWAiXqAjMCogLvAinOAzcCiQHWAymIBDcBZI0ELaEEOwFEyQQL5wQVATLoBAvuBBcBKIAFD4AFXAEfhwUTiwUmAR6cBQ+cBVMBFpcFD5cFZgEPXBNcaQKiBVcTV2QCmQVoE34dAoIFfxOPAS0C4wSQAROZASsCzgSaAROgAR8CwQSuARuuAXECtQSpARupAWwCrAS8ARvjASUC+QPkARvvAScC4APwARv7AScCxwP8ARuRAjMClgOSAhuUAicCkwObAh+mAisC/QKnAh+tAjkC8wK0AiPEAjMC1gLFAiPQAjsCwwLXAifiAjMCrQLjAifpAkMCowL1AiucAzUC8AGdAyuoAzcC1wGpAyu0AzcCvgG1AyvKA0MCjQHLAyvNAzcCigHaAyv4AzUBffkDK4QERgFohQQrhwQ3AWWOBC+ZBDsBT5oEL6AESQFF1AQR1AReATTbBBXfBCgBM+sEEesEXwEpeBl4ZwKOBW0dcTACjQV7GXtjAoMFjAEZjAFfAvgEggEZggFjAu4EhwEZhwFlAuQEkwEZkwFmAtkElwEXlwFnAs8EnQEZnQFdAsIExwEhxwFuAp8E4AEh4AFtApME2gEh2gFvAocE3QEh3QFyAvsDzgEl0gE4AvoD7AEh7AF+Au0D5wEh5wFxAuED+AEh+AF3AtQD8wEh8wFvAsgDiQIhiQJnArsDjgIhjgJnAq8DhAIhhAJlAqMD/wEh/wFpApcDowIlowJ+AocDngIlngJ2Av4CqgIlqgJpAvQCwQIpwQJvAukCvAIpvAJxAuACtwIptwJ7AtcCyAIpyAJzAs0CzQIpzQJtAsQC3wIt3wKFAQK3AtoCLdoCfgKuAuYCLeYCcQKkAoADMYADfgKWApkDMZkDfQKKApMDMZMDfwL+AZYDMZYDggEC8gGHAzWLA0gC8QGlAzGlA44BAuQBoAMxoAOBAQLYAbEDMbEDhwECywGsAzGsA38CvwHCAzHCA3cCsgHHAzHHA3cCpgG9AzG9A3UCmgG4AzG4A3kCjgHlAzHlA34Bf+wDNfADSAF+gQQxgQR1AXP8AzH8A4gBAWmWBDWWBIwBAVmRBDWRBIYBAVCdBDWdBHkBRg==</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d2ZDOlxHaXQtSVNFTFxDT1NcVHJhYmFsaG8gUHJhdGljb1wwMiAtIENvZGlnb1xCcmFuZEFuYWx5dGljc1xCcmFuZEFuYWx5dGljc1xCcmFuZEFuYWx5dGljc1NlcnZpY2UueGFtbHh6GQO6BREBAUwLTGEBAlIFuAUTAQhTB9EEGQFB0gQHhAUUASaFBQe3BRUBClJTUlkBCVQJyAQUAqwEpgERxAQcAowDmgIZwAQkAqsC6QIhvAQsAV+gBCm4BDQBQtQEC9cELAE72QQJgwUXASeJBQmnBRMBHagFCbMFJAEOtAUJtgUVAQtWDWEZAv4EZhGjAR8CrgSoARWzASECmwS4ARmXAicCjgOcAh2wAisC8QK1AiHmAjgCrQLrAiX/AjMCkAKEAynjAzcCgwHrAymdBDcBYaIELbYEOwFE3QQL+wQVATL8BAuCBRcBKJQFD5QFXAEfmwUTnwUmAR6wBQ+wBVMBFqsFD6sFZgEPXhNeaQKHBVkTWWQC/wRqE4ABHQLqBIEBE5EBLQLOBJIBE5sBKwK7BJwBE6IBHwKvBLABG7ABcQKkBKsBG6sBbAKcBL4BG+UBJQLtA+YBG/EBJwLWA/IBG/0BJwK/A/4BG5MCMwKSA5QCG5YCJwKPA50CH6gCKwL7AqkCH68COQLyArkCI9wCMQK4At4CJeQCOwKuAuwCJ/cCMwKaAvgCJ/4CQwKRAooDK7EDNQLiAbIDK70DNwLLAb4DK8kDNwK0AcoDK98DQwKHAeADK+IDNwKEAe8DK40ENQF4jgQrmQRGAWWaBCucBDcBYqMEL64EOwFOrwQvtQRJAUXoBBHoBF4BNO8EFfMEKAEz/wQR/wRfASl6GXpnAvUEbx1zMAL0BH0ZfWMC6wSOARmOAV8C4QSEARmEAWMC2ASJARmJAWUCzwSVARmVAWYCxQSZAReZAWcCvASfARmfAV0CsATJASHJAW4CkATiASHiAW0ChQTcASHcAW8C+gPfASHfAXIC7wPQASXUATgC7gPuASHuAX4C4gPpASHpAXEC1wP6ASH6AXcCywP1ASH1AW8CwAOLAiGLAmcCtAOQAiGQAmcCqQOGAiGGAmUCngOBAiGBAmkCkwOlAiWlAn4ChAOgAiWgAnYC/AKsAiWsAmkC8wK6AiXPAjUCzALQAiXbAj0CuQLhAivhAm8CrwL0Ai30AoUBAqMC7wIt7wJ+ApsC+wIt+wJxApIClQMxlQN+AoUCrgMxrgN9AvoBqAMxqAN/Au8BqwMxqwOCAQLkAZwDNaADSALjAboDMboDjgEC1wG1AzG1A4EBAswBxgMxxgOHAQLAAcEDMcEDfwK1AdcDMdcDdwKpAdwDMdwDdwKeAdIDMdIDdQKTAc0DMc0DeQKIAfoDMfoDfgF6gQQ1hQRIAXmWBDGWBHUBb5EEMZEEiAEBZqsENasEjAEBV6YENaYEhgEBT7IENbIEeQFGxwIrxwJvAugCzAIrzAJxAt8CwgIrwgJzAtYCvQIrvQJ9As0C0wIr0wJ1AsMC2AIr2AJvAroC</sads:DebugSymbol.Symbol>
   </p1:Sequence>
   <sap2010:WorkflowViewState.ViewStateManager>
     <sap2010:ViewStateManager>
@@ -716,13 +736,15 @@ state==StudyState.Initial</mca:CSharpValue>
       </sap2010:ViewStateData>
       <sap2010:ViewStateData Id="SpyTopics_1" sap:VirtualizedContainerService.HintSize="200,22" />
       <sap2010:ViewStateData Id="SaveReportActivity_1" sap:VirtualizedContainerService.HintSize="200,22" />
-      <sap2010:ViewStateData Id="Sequence_9" sap:VirtualizedContainerService.HintSize="222,208">
+      <sap2010:ViewStateData Id="Sequence_33" sap:VirtualizedContainerService.HintSize="222,208">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="CancelSpyTopics_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="CancellationScope_1" sap:VirtualizedContainerService.HintSize="258,437" />
       <sap2010:ViewStateData Id="Assign_9" sap:VirtualizedContainerService.HintSize="242,62" />
       <sap2010:ViewStateData Id="NotifyEmployeeActivity_1" sap:VirtualizedContainerService.HintSize="242,22" />
       <sap2010:ViewStateData Id="Sequence_13" sap:VirtualizedContainerService.HintSize="264,248">
@@ -801,7 +823,7 @@ state==StudyState.Initial</mca:CSharpValue>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Transition_4" sap:VirtualizedContainerService.HintSize="430,657">
+      <sap2010:ViewStateData Id="Transition_4" sap:VirtualizedContainerService.HintSize="430,884">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:PointCollection x:Key="ConnectorLocation">407.1,230.5 407.1,260.5 461.4,260.5 461.4,299.5</av:PointCollection>
