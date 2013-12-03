@@ -10,14 +10,13 @@ namespace TwitterSpy.Activities
 {
     public class TwitterStopActivity : CodeActivity
     {
-        public InArgument<ITwitterService> Instance { get; set; }
+        public InArgument<int> Token { get; set; }
         public OutArgument<TopicModel> Topic { get; set; }
 
         protected override void Execute(CodeActivityContext context)
         {
-            var instance = Instance.Get(context);
-
-            var topic = instance.StopStreaming();
+            var token = Token.Get(context);
+            var topic = TwitterSyncService.StopStreaming(token);
 
             Topic.Set(context, topic);
         }
