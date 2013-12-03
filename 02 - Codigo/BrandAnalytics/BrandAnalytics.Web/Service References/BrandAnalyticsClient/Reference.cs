@@ -15,6 +15,12 @@ namespace BrandAnalytics.Web.BrandAnalyticsClient {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="BrandAnalyticsClient.IBrandAnalyticsService")]
     public interface IBrandAnalyticsService {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBrandAnalyticsService/CancelStudy", ReplyAction="http://tempuri.org/IBrandAnalyticsService/CancelStudyResponse")]
+        void CancelStudy(int token);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBrandAnalyticsService/CancelStudy", ReplyAction="http://tempuri.org/IBrandAnalyticsService/CancelStudyResponse")]
+        System.Threading.Tasks.Task CancelStudyAsync(int token);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBrandAnalyticsService/GetState", ReplyAction="http://tempuri.org/IBrandAnalyticsService/GetStateResponse")]
         string GetState(int token);
         
@@ -26,12 +32,6 @@ namespace BrandAnalytics.Web.BrandAnalyticsClient {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBrandAnalyticsService/RequestStudy", ReplyAction="http://tempuri.org/IBrandAnalyticsService/RequestStudyResponse")]
         System.Threading.Tasks.Task<int> RequestStudyAsync(string userName, string mark);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBrandAnalyticsService/CancelStudy", ReplyAction="http://tempuri.org/IBrandAnalyticsService/CancelStudyResponse")]
-        void CancelStudy(int token);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBrandAnalyticsService/CancelStudy", ReplyAction="http://tempuri.org/IBrandAnalyticsService/CancelStudyResponse")]
-        System.Threading.Tasks.Task CancelStudyAsync(int token);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBrandAnalyticsService/SpyTopics", ReplyAction="http://tempuri.org/IBrandAnalyticsService/SpyTopicsResponse")]
         void SpyTopics(int token, string userName, string topics, int seconds);
@@ -79,6 +79,14 @@ namespace BrandAnalytics.Web.BrandAnalyticsClient {
                 base(binding, remoteAddress) {
         }
         
+        public void CancelStudy(int token) {
+            base.Channel.CancelStudy(token);
+        }
+        
+        public System.Threading.Tasks.Task CancelStudyAsync(int token) {
+            return base.Channel.CancelStudyAsync(token);
+        }
+        
         public string GetState(int token) {
             return base.Channel.GetState(token);
         }
@@ -93,14 +101,6 @@ namespace BrandAnalytics.Web.BrandAnalyticsClient {
         
         public System.Threading.Tasks.Task<int> RequestStudyAsync(string userName, string mark) {
             return base.Channel.RequestStudyAsync(userName, mark);
-        }
-        
-        public void CancelStudy(int token) {
-            base.Channel.CancelStudy(token);
-        }
-        
-        public System.Threading.Tasks.Task CancelStudyAsync(int token) {
-            return base.Channel.CancelStudyAsync(token);
         }
         
         public void SpyTopics(int token, string userName, string topics, int seconds) {
