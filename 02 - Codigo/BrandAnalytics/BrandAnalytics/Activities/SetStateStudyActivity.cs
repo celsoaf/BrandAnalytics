@@ -20,7 +20,7 @@ namespace BrandAnalytics.Activities
                 var id = StudyId.Get(context);
 
                 var study = ctx.Studies.FirstOrDefault(s => s.Id == id);
-                if (study != null)
+                if (study != null && study.State != StudyState.Canceled)
                 {
                     study.State = State.Get(context);
                     ctx.SaveChanges();

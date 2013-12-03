@@ -3,6 +3,7 @@ using System.Activities;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using BrandAnalytics.Data.Enums;
 using BrandAnalytics.Data.Models;
 
 namespace BrandAnalytics.Activities
@@ -21,7 +22,7 @@ namespace BrandAnalytics.Activities
                 var id = StudyId.Get(context);
 
                 var study = ctx.Studies.FirstOrDefault(s => s.Id == id);
-                if (study != null)
+                if (study != null && study.State != StudyState.Canceled)
                 {
                     var userName = UserName.Get(context);
                     //study.EmployeeUserName = userName;
@@ -38,7 +39,7 @@ namespace BrandAnalytics.Activities
                     var topics = Topics.Get(context);
                     foreach (var item in topics)
                         study.Topics.Add(new StudyTopic() { Name = item });
-                        
+
 
                     study.State = Data.Enums.StudyState.Collecting;
 
