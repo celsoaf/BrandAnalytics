@@ -6,6 +6,7 @@
   <xs:element name="SpyTopics">
     <xs:complexType>
       <xs:sequence>
+        <xs:element minOccurs="0" name="token" type="xs:int" />
         <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="topics" nillable="true" type="q1:ArrayOfstring" />
         <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="duration" type="q2:duration" />
       </xs:sequence>
@@ -16,6 +17,18 @@
       <xs:sequence>
         <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/TwitterSpy.Models" minOccurs="0" name="SpyTopicsResult" nillable="true" type="q3:ReportModel" />
       </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelSpyTopics">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="token" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelSpyTopicsResponse">
+    <xs:complexType>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
 </xs:schema>

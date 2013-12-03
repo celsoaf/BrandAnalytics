@@ -9,161 +9,7 @@
 //------------------------------------------------------------------------------
 
 namespace BrandAnalytics.TwitterSpyService {
-    using System.Runtime.Serialization;
-    using System;
     
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ReportModel", Namespace="http://schemas.datacontract.org/2004/07/TwitterSpy.Models")]
-    [System.SerializableAttribute()]
-    public partial class ReportModel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int AuthorsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private BrandAnalytics.TwitterSpyService.ReportTermModel[] TermsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string[] TopicsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int TweetsField;
-        
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Authors {
-            get {
-                return this.AuthorsField;
-            }
-            set {
-                if ((this.AuthorsField.Equals(value) != true)) {
-                    this.AuthorsField = value;
-                    this.RaisePropertyChanged("Authors");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public BrandAnalytics.TwitterSpyService.ReportTermModel[] Terms {
-            get {
-                return this.TermsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TermsField, value) != true)) {
-                    this.TermsField = value;
-                    this.RaisePropertyChanged("Terms");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string[] Topics {
-            get {
-                return this.TopicsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TopicsField, value) != true)) {
-                    this.TopicsField = value;
-                    this.RaisePropertyChanged("Topics");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Tweets {
-            get {
-                return this.TweetsField;
-            }
-            set {
-                if ((this.TweetsField.Equals(value) != true)) {
-                    this.TweetsField = value;
-                    this.RaisePropertyChanged("Tweets");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ReportTermModel", Namespace="http://schemas.datacontract.org/2004/07/TwitterSpy.Models")]
-    [System.SerializableAttribute()]
-    public partial class ReportTermModel : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CountField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TermField;
-        
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Count {
-            get {
-                return this.CountField;
-            }
-            set {
-                if ((this.CountField.Equals(value) != true)) {
-                    this.CountField = value;
-                    this.RaisePropertyChanged("Count");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Term {
-            get {
-                return this.TermField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TermField, value) != true)) {
-                    this.TermField = value;
-                    this.RaisePropertyChanged("Term");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="TwitterSpyService.ITwitterSpyService")]
@@ -174,6 +20,12 @@ namespace BrandAnalytics.TwitterSpyService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITwitterSpyService/SpyTopics", ReplyAction="http://tempuri.org/ITwitterSpyService/SpyTopicsResponse")]
         System.Threading.Tasks.Task<BrandAnalytics.TwitterSpyService.SpyTopicsResponse> SpyTopicsAsync(BrandAnalytics.TwitterSpyService.SpyTopicsRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITwitterSpyService/CancelSpyTopics", ReplyAction="http://tempuri.org/ITwitterSpyService/CancelSpyTopicsResponse")]
+        BrandAnalytics.TwitterSpyService.CancelSpyTopicsResponse CancelSpyTopics(BrandAnalytics.TwitterSpyService.CancelSpyTopicsRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITwitterSpyService/CancelSpyTopics", ReplyAction="http://tempuri.org/ITwitterSpyService/CancelSpyTopicsResponse")]
+        System.Threading.Tasks.Task<BrandAnalytics.TwitterSpyService.CancelSpyTopicsResponse> CancelSpyTopicsAsync(BrandAnalytics.TwitterSpyService.CancelSpyTopicsRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -182,15 +34,19 @@ namespace BrandAnalytics.TwitterSpyService {
     public partial class SpyTopicsRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public string[] topics;
+        public int token;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public string[] topics;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
         public System.TimeSpan duration;
         
         public SpyTopicsRequest() {
         }
         
-        public SpyTopicsRequest(string[] topics, System.TimeSpan duration) {
+        public SpyTopicsRequest(int token, string[] topics, System.TimeSpan duration) {
+            this.token = token;
             this.topics = topics;
             this.duration = duration;
         }
@@ -202,13 +58,38 @@ namespace BrandAnalytics.TwitterSpyService {
     public partial class SpyTopicsResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public BrandAnalytics.TwitterSpyService.ReportModel SpyTopicsResult;
+        public TwitterSpy.Models.ReportModel SpyTopicsResult;
         
         public SpyTopicsResponse() {
         }
         
-        public SpyTopicsResponse(BrandAnalytics.TwitterSpyService.ReportModel SpyTopicsResult) {
+        public SpyTopicsResponse(TwitterSpy.Models.ReportModel SpyTopicsResult) {
             this.SpyTopicsResult = SpyTopicsResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="CancelSpyTopics", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class CancelSpyTopicsRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public int token;
+        
+        public CancelSpyTopicsRequest() {
+        }
+        
+        public CancelSpyTopicsRequest(int token) {
+            this.token = token;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="CancelSpyTopicsResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class CancelSpyTopicsResponse {
+        
+        public CancelSpyTopicsResponse() {
         }
     }
 }

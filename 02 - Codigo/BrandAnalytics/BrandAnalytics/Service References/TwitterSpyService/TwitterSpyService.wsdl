@@ -14,16 +14,35 @@
   <wsdl:message name="ITwitterSpyService_SpyTopics_OutputMessage">
     <wsdl:part name="parameters" element="tns:SpyTopicsResponse" />
   </wsdl:message>
+  <wsdl:message name="ITwitterSpyService_CancelSpyTopics_InputMessage">
+    <wsdl:part name="parameters" element="tns:CancelSpyTopics" />
+  </wsdl:message>
+  <wsdl:message name="ITwitterSpyService_CancelSpyTopics_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CancelSpyTopicsResponse" />
+  </wsdl:message>
   <wsdl:portType name="ITwitterSpyService">
     <wsdl:operation name="SpyTopics">
       <wsdl:input wsaw:Action="http://tempuri.org/ITwitterSpyService/SpyTopics" message="tns:ITwitterSpyService_SpyTopics_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ITwitterSpyService/SpyTopicsResponse" message="tns:ITwitterSpyService_SpyTopics_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelSpyTopics">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITwitterSpyService/CancelSpyTopics" message="tns:ITwitterSpyService_CancelSpyTopics_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITwitterSpyService/CancelSpyTopicsResponse" message="tns:ITwitterSpyService_CancelSpyTopics_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ITwitterSpyService" type="tns:ITwitterSpyService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="SpyTopics">
       <soap:operation soapAction="http://tempuri.org/ITwitterSpyService/SpyTopics" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelSpyTopics">
+      <soap:operation soapAction="http://tempuri.org/ITwitterSpyService/CancelSpyTopics" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap2010 sads" x:Class="BrandAnalytics.TwitterSpyService.Activities.SpyTopics" this:SpyTopics.EndpointConfigurationName="BasicHttpBinding_ITwitterSpyService"
+<Activity mc:Ignorable="sap2010 sads" x:Class="BrandAnalytics.TwitterSpyService.Activities.CancelSpyTopics" this:CancelSpyTopics.EndpointConfigurationName="BasicHttpBinding_ITwitterSpyService"
  xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
  xmlns:bt="clr-namespace:BrandAnalytics.TwitterSpyService;assembly=BrandAnalytics, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
  xmlns:bt1="clr-namespace:BrandAnalytics.TwitterSpyService;assembly=BrandAnalytics"
@@ -6,13 +6,10 @@
  xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
  xmlns:p="http://tempuri.org/"
  xmlns:p1="http://schemas.microsoft.com/netfx/2009/xaml/servicemodel"
- xmlns:s="clr-namespace:System;assembly=mscorlib"
  xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
  xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
  xmlns:sc="clr-namespace:System.ComponentModel;assembly=System"
  xmlns:this="clr-namespace:BrandAnalytics.TwitterSpyService.Activities"
- xmlns:tm="clr-namespace:TwitterSpy.Models;assembly=TwitterSpy"
- xmlns:tm1="clr-namespace:TwitterSpy.Models;assembly=TwitterSpy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"
  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="EndpointConfigurationName" Type="x:String">
@@ -29,17 +26,6 @@
         <RequiredArgumentAttribute />
       </x:Property.Attributes>
     </x:Property>
-    <x:Property Name="topics" Type="InArgument(s:String[])">
-      <x:Property.Attributes>
-        <RequiredArgumentAttribute />
-      </x:Property.Attributes>
-    </x:Property>
-    <x:Property Name="duration" Type="InArgument(x:TimeSpan)">
-      <x:Property.Attributes>
-        <RequiredArgumentAttribute />
-      </x:Property.Attributes>
-    </x:Property>
-    <x:Property Name="SpyTopicsResult" Type="OutArgument(tm:ReportModel)" />
   </x:Members>
   <mva:VisualBasic.Settings>Assembly references and imported namespaces serialized as XML namespaces</mva:VisualBasic.Settings>
   <Sequence>
@@ -47,7 +33,7 @@
       <x:Reference>__ReferenceID1</x:Reference>
       <x:Reference>__ReferenceID2</x:Reference>
     </Sequence.Variables>
-    <p1:Send x:Name="__ReferenceID0" Action="http://tempuri.org/ITwitterSpyService/SpyTopics" OperationName="SpyTopics" ServiceContractName="p:ITwitterSpyService">
+    <p1:Send x:Name="__ReferenceID0" Action="http://tempuri.org/ITwitterSpyService/CancelSpyTopics" OperationName="CancelSpyTopics" ServiceContractName="p:ITwitterSpyService">
       <p1:Send.CorrelationInitializers>
         <p1:RequestReplyCorrelationInitializer>
           <p1:RequestReplyCorrelationInitializer.CorrelationHandle>
@@ -62,31 +48,23 @@
         </p1:RequestReplyCorrelationInitializer>
       </p1:Send.CorrelationInitializers>
       <p1:SendMessageContent>
-        <InArgument x:TypeArguments="bt1:SpyTopicsRequest">[New BrandAnalytics.TwitterSpyService.SpyTopicsRequest() With { .token = token, .topics = topics, .duration = duration }]</InArgument>
+        <InArgument x:TypeArguments="bt1:CancelSpyTopicsRequest">[New BrandAnalytics.TwitterSpyService.CancelSpyTopicsRequest() With { .token = token }]</InArgument>
       </p1:SendMessageContent>
       <p1:Send.EndpointConfigurationName>
         <PropertyReference x:TypeArguments="x:String" PropertyName="EndpointConfigurationName" />
       </p1:Send.EndpointConfigurationName>
     </p1:Send>
-    <p1:ReceiveReply Request="{x:Reference __ReferenceID0}" Action="http://tempuri.org/ITwitterSpyService/SpyTopicsResponse">
+    <p1:ReceiveReply Request="{x:Reference __ReferenceID0}" Action="http://tempuri.org/ITwitterSpyService/CancelSpyTopicsResponse">
       <p1:ReceiveMessageContent>
-        <OutArgument x:TypeArguments="bt1:SpyTopicsResponse">
-          <VariableReference x:TypeArguments="bt1:SpyTopicsResponse">
+        <OutArgument x:TypeArguments="bt1:CancelSpyTopicsResponse">
+          <VariableReference x:TypeArguments="bt1:CancelSpyTopicsResponse">
             <VariableReference.Variable>
-              <Variable x:TypeArguments="bt1:SpyTopicsResponse" x:Name="__ReferenceID1" Name="tempResult_4d83db02063a435a8779592776c2432d" />
+              <Variable x:TypeArguments="bt1:CancelSpyTopicsResponse" x:Name="__ReferenceID1" Name="tempResult_4064a40d49614b14b0ad70e413af0725" />
             </VariableReference.Variable>
           </VariableReference>
         </OutArgument>
       </p1:ReceiveMessageContent>
     </p1:ReceiveReply>
-    <Assign>
-      <Assign.To>
-        <OutArgument x:TypeArguments="tm:ReportModel">[SpyTopicsResult]</OutArgument>
-      </Assign.To>
-      <Assign.Value>
-        <InArgument x:TypeArguments="tm:ReportModel">[tempResult_4d83db02063a435a8779592776c2432d.SpyTopicsResult]</InArgument>
-      </Assign.Value>
-    </Assign>
-    <sads:DebugSymbol.Symbol>d7IBQzpcR2l0LUlTRUxcQ09TXFRyYWJhbGhvIFByYXRpY29cMDIgLSBDb2RpZ29cQnJhbmRBbmFseXRpY3NcQnJhbmRBbmFseXRpY3NcU2VydmljZSBSZWZlcmVuY2VzXFR3aXR0ZXJTcHlTZXJ2aWNlXEJyYW5kQW5hbHl0aWNzLlR3aXR0ZXJTcHlTZXJ2aWNlLklUd2l0dGVyU3B5U2VydmljZS5TcHlUb3BpY3MueGFtbAktA1sOAgEBMgVGDwIBCkcFURcCAQdSBVkOAgECQTxBtQECAQw3DzsfAgELSgtOHwIBCVc2V3MCAQVUN1RIAgED</sads:DebugSymbol.Symbol>
+    <sads:DebugSymbol.Symbol>d7gBQzpcR2l0LUlTRUxcQ09TXFRyYWJhbGhvIFByYXRpY29cMDIgLSBDb2RpZ29cQnJhbmRBbmFseXRpY3NcQnJhbmRBbmFseXRpY3NcU2VydmljZSBSZWZlcmVuY2VzXFR3aXR0ZXJTcHlTZXJ2aWNlXEJyYW5kQW5hbHl0aWNzLlR3aXR0ZXJTcHlTZXJ2aWNlLklUd2l0dGVyU3B5U2VydmljZS5DYW5jZWxTcHlUb3BpY3MueGFtbAYfA0UOAgEBJAU4DwIBBTkFQxcCAQIzQjOZAQIBBykPLR8CAQY8C0AfAgEE</sads:DebugSymbol.Symbol>
   </Sequence>
 </Activity>
