@@ -59,7 +59,8 @@
                 { 
                     @Html.ActionLink("Cancel", "Cancel", new { id = item.Id }) 
                 } | 
-                @if (User.IsInRole(BrandAnalytics.Web.Utils.ApplicationRoles.AuthorizationManage))
+                @if (User.IsInRole(BrandAnalytics.Web.Utils.ApplicationRoles.AuthorizationManage) &&
+                    !item.Running)
                 {
                     @Html.ActionLink("Delete", "Delete", new { id = item.Id })
                 }

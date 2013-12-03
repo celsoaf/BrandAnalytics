@@ -26,7 +26,7 @@ namespace BrandAnalytics.Web.Controllers
 
         public ActionResult Submit(int id)
         {
-            var model = new StudySubmitModel() { Id = id, Duration = 10 };
+            var model = new StudySubmitModel() { Id = id, Duration = 10, Topics="teste;ola" };
 
             return View(model);
         }
