@@ -24,6 +24,7 @@
         </p2:RequestReplyCorrelationInitializer>
       </p2:Receive.CorrelationInitializers>
       <p2:ReceiveParametersContent>
+        <p1:OutArgument x:TypeArguments="x:Int32" x:Key="token" />
         <p1:OutArgument x:TypeArguments="s:String[]" x:Key="topics" />
         <p1:OutArgument x:TypeArguments="x:TimeSpan" x:Key="duration" />
       </p2:ReceiveParametersContent>

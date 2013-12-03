@@ -12,6 +12,9 @@ namespace TwitterSpy
     public interface ITwitterSpyService
     {
         [OperationContract]
-        ReportModel SpyTopics(string[] topics, TimeSpan duration);
+        ReportModel SpyTopics(int token, string[] topics, TimeSpan duration);
+
+        [OperationContract]
+        void CancelSpyTopics(int token);
     }
 }
