@@ -5,7 +5,6 @@ using System.Linq;
 using System.Web;
 using BrandAnalytics.Data.Enums;
 using BrandAnalytics.Data.Models;
-using BrandAnalytics.Infrastructure.Services;
 
 namespace BrandAnalytics.Activities
 {
