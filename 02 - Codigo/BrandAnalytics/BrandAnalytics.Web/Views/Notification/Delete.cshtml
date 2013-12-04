@@ -30,13 +30,6 @@
     <div class="display-field">
         @Html.DisplayFor(model => model.Body)
     </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Read)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Read)
-    </div>
 </fieldset>
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
