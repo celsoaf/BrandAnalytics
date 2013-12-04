@@ -55,6 +55,10 @@
     <Compile Include="Migrations\201311290157373_NotificationData.Designer.cs">
       <DependentUpon>201311290157373_NotificationData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201312042221402_RemoveRead.cs" />
+    <Compile Include="Migrations\201312042221402_RemoveRead.Designer.cs">
+      <DependentUpon>201312042221402_RemoveRead.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BrandAnalyticsDB.cs" />
     <Compile Include="Models\Client.cs" />
@@ -75,6 +79,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201311290157373_NotificationData.resx">
       <DependentUpon>201311290157373_NotificationData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312042221402_RemoveRead.resx">
+      <DependentUpon>201312042221402_RemoveRead.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
