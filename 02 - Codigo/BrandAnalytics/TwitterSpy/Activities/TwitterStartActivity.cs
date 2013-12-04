@@ -17,7 +17,7 @@ namespace TwitterSpy.Activities
             var topic = Topic.Get(context);
             var token = Token.Get(context);
 
-            TwitterSyncService.StartStreaming(token, topic);
+            TwitterSyncService.Instance.StartStreaming(token, topic);
         }
     }
 }

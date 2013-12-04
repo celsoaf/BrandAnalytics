@@ -10,13 +10,36 @@ namespace TwitterSpy.Services
 {
     public class TwitterSyncService
     {
-        private static AutoResetEvent _autoResetEvent = new AutoResetEvent(true);
-        private static int? _runningToken;
-        private static List<int> _pending = new List<int>();
+        private static TwitterSyncService _instance;
         private static object _locker = new object();
-        private static ITwitterService _instance;
 
-        public static void StartStreaming(int token, string topic)
+        private TwitterSyncService()
+        {
+
+        }
+
+        public static TwitterSyncService Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    lock (_locker)
+                    {
+                        if (_instance == null)
+                            _instance = new TwitterSyncService();
+                    }
+                }
+                return _instance;
+            }
+        }
+
+        private AutoResetEvent _autoResetEvent = new AutoResetEvent(true);
+        private int? _runningToken;
+        private List<int> _pending = new List<int>();
+        private ITwitterService _service;
+
+        public void StartStreaming(int token, string topic)
         {
             Monitor.Enter(_locker);
 
@@ -33,30 +56,30 @@ namespace TwitterSpy.Services
                 _runningToken = token;
                 _pending.Remove(token);
 
-                _instance = new TwitterService();
-                _instance.StartStreaming(topic);
+                _service = new TwitterService();
+                _service.StartStreaming(topic);
             }
 
             Monitor.Exit(_locker);
         }
 
-        public static TopicModel StopStreaming(int token)
+        public TopicModel StopStreaming(int token)
         {
             return StopService(token);
         }
 
-        public static void CancelStreaming(int token)
+        public void CancelStreaming(int token)
         {
             StopService(token);
         }
 
-        private static TopicModel StopService(int token)
+        private TopicModel StopService(int token)
         {
             Monitor.Enter(_locker);
 
             if (_runningToken == token)
             {
-                var tm = _instance.StopStreaming();
+                var tm = _service.StopStreaming();
                 _runningToken = null;
                 Monitor.Exit(_locker);
                 _autoResetEvent.Set();

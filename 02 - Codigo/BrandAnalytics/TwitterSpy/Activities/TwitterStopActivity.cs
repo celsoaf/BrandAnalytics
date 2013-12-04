@@ -16,7 +16,7 @@ namespace TwitterSpy.Activities
         protected override void Execute(CodeActivityContext context)
         {
             var token = Token.Get(context);
-            var topic = TwitterSyncService.StopStreaming(token);
+            var topic = TwitterSyncService.Instance.StopStreaming(token);
 
             Topic.Set(context, topic);
         }

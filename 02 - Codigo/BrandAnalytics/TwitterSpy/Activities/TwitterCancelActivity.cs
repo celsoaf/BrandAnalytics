@@ -16,7 +16,7 @@ namespace TwitterSpy.Activities
         {
             var token = Token.Get(context);
             
-            TwitterSyncService.CancelStreaming(token);
+            TwitterSyncService.Instance.CancelStreaming(token);
         }
     }
 }
