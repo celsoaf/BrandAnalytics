@@ -19,7 +19,6 @@ namespace BrandAnalytics.Data.Models
 
         public string Subject { get; set; }
         public string Body { get; set; }
-        public bool Read { get; set; }
 
         public DateTime Created { get; set; }
 
